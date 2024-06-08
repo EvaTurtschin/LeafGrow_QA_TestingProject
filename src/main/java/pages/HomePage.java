@@ -22,10 +22,10 @@ public class HomePage extends BasePage{
     WebElement meinetoepfeLinkHeader;
 
     @FindBy(xpath = )
-    WebElement anmeldenLinkHeader;
+    WebElement anmeldenBtnHeader;
 
     @FindBy(xpath = )
-    WebElement anmeldenLinkBody;
+    WebElement anmeldenBtnBody;
 
     @FindBy(xpath = )
     WebElement gesetzPageLinkFQA;
@@ -33,43 +33,33 @@ public class HomePage extends BasePage{
     @FindBy(xpath = )
     WebElement gesetzPageLinkFooter;
 
-
-
-    public HomePage isHomePageTitleDisplayed() {
-        assert isElementDisplayed(homePageTitle);
-        return this;
-    }
-
-    public HomePage userAnmelden() {
-
-    }
-    public HomePage clickHomeBtn() {
-        click(homeBtn);
+    public HomePage ClickHomeBtn() {
+        Click(homeBtn);
         return new HomePage(driver);
     }
 
-    public AnleitungPage clickAnleitungLinkInHeader() {
-        click(anleitungLinkHeader);
+    public AnleitungPage ClickAnleitungLinkInHeader() {
+        Click(anleitungLinkHeader);
         return new AnleitungPage(driver);
     }
 
-    public MeineToepfePage clickMeineToepfeLinkInHeader() {
-        click(meinetoepfeLinkHeader);
+    public MeineToepfePage ClickMeineToepfeLinkInHeader() {
+        Click(meinetoepfeLinkHeader);
         return new MeineToepfePage(driver);
     }
 
-    public AnmeldenPage clickAnmeldenlinkInHeader() {
-        click(anmeldenLinkHeader);
+    public AnmeldenPage ClickAnmeldenBtnInHeader() {
+        Click(anmeldenBtnHeader);
         return new AnmeldenPage(driver);
     }
 
-    public AnmeldenPage clickAnmeldenlinkInBody() {
-        clickWithJSScroll(anmeldenLinkBody, 0, 200);
+    public AnmeldenPage ClickAnmeldenBtnInBody() {
+        ClickWithJSScroll(anmeldenBtnBody, 0, 200);
         return new AnmeldenPage(driver);
     }
 
-    public GesetzPage clickGesetzPagelinkInFAQ() {
-        clickWithJSScroll(gesetzPageLinkFQA, 0, 200);
+    public GesetzPage ClickGesetzPagelinkInFAQ() {
+        ClickWithJSScroll(gesetzPageLinkFQA, 0, 200);
         return new GesetzPage(driver);
     }
 
@@ -80,8 +70,8 @@ public class HomePage extends BasePage{
 //
 //    }
 
-    public GesetzPage clickGesetzPagelinkInFooter() {
-        clickWithJSScroll(gesetzPageLinkFooter, 0, 500);
+    public GesetzPage ClickGesetzPagelinkInFooter() {
+        ClickWithJSScroll(gesetzPageLinkFooter, 0, 500);
         return new GesetzPage(driver);
     }
 }

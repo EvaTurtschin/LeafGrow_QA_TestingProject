@@ -13,10 +13,10 @@ public class GesetzPage extends BasePage{
     @FindBy(xpath = )
     WebElement gesetzPageTitle;
 
-    public boolean verifyGesetzPageOpen() {
-        String actualRes = getTextBase(gesetzPageTitle);
+    public boolean VerifyGesetzPageOpen() {
+        String actualRes = GetTextBase(gesetzPageTitle);
         String expectedRes = "Gesetzliche Informationen";
-        return isStringsEqual(actualRes, expectedRes);
+        return IsStringsEqual(actualRes, expectedRes);
     }
 
     public HomePage switchToHomePage(int index) {

@@ -10,9 +10,19 @@ public class AnmeldenPage extends BasePage{
     @FindBy(xpath = )
     WebElement anmeldenPageTitle;
 
-    public boolean verifyAnmeldenPageOpen() {
-        String actualRes = getTextBase(anmeldenPageTitle);
+    public boolean VerifyAnmeldenPageOpen() {
+        String actualRes = GetTextBase(anmeldenPageTitle);
         String expectedRes = "Anmelden";
-        return isStringsEqual(actualRes, expectedRes);
+        return IsStringsEqual(actualRes, expectedRes);
     }
+
+    public AnmeldenPage LogoutUser() {
+
+    }
+
+    public AnmeldenPage LoginUser () {
+
+    }
+
+
 }

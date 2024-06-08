@@ -1,6 +1,7 @@
 package pages;
 
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
@@ -18,16 +19,16 @@ public class BasePage {
         js = (JavascriptExecutor) driver;
     }
 
-    public void click(WebElement element) {
+    public void Click(WebElement element) {
         element.click();
     }
 
-    public void clickWithJSScroll(WebElement element, int x, int y) {
+    public void ClickWithJSScroll(WebElement element, int x, int y) {
         js.executeScript("window.scrollBy(" + x + "," + y + ")");
-        click(element);
+        Click(element);
     }
 
-    protected boolean isStringsEqual(String actualRes, String expectedRes) {
+    protected boolean IsStringsEqual(String actualRes, String expectedRes) {
         if (actualRes.equals(expectedRes)) {
             return true;
         } else {
@@ -45,26 +46,39 @@ public class BasePage {
         }
     }
 
-    public String getTextBase(WebElement element) {
+    public String GetTextBase(WebElement element) {
         return element.getText().trim();
     }
 
-    public String getAttributeBase(WebElement el, String attributeName) {
+    public String GetAttributeBase(WebElement el, String attributeName) {
         return el.getAttribute(attributeName);
     }
 
-    public boolean isElementDisplayed(WebElement element) {
+    public boolean IsElementDisplayed(WebElement element) {
         return element.isDisplayed();
     }
 
-    public void navigateToHomePage() {
+    public void NavigateToHomePage() {
         driver.get("");
     }
 
-    public void type(WebElement element, String text) {
-        click(element);
+    public void TypeText(WebElement element, String text) {
+        Click(element);
         element.clear();
         element.sendKeys(text);
     }
+
+    protected Keys GetKeyForOSCommandOrControl() {
+        String os = System.getProperty("os.name");
+        System.out.println("my os: " + os);
+        if(os.startsWith("Mac")) {
+            return Keys.COMMAND;
+        } else if(os.startsWith("Win")) {
+            return Keys.CONTROL;
+        }
+        return Keys.CONTROL;
+    }
+
+
 
 }

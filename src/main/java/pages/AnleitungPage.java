@@ -10,9 +10,9 @@ public class AnleitungPage extends BasePage{
     @FindBy(xpath = )
     WebElement anleitungPageTitle;
 
-    public boolean verifyAnleitungPageOpen() {
-        String actualRes = getTextBase(anleitungPageTitle);
+    public boolean VerifyAnleitungPageOpen() {
+        String actualRes = GetTextBase(anleitungPageTitle);
         String expectedRes = "Anleitung";
-        return isStringsEqual(actualRes, expectedRes);
+        return IsStringsEqual(actualRes, expectedRes);
     }
 }

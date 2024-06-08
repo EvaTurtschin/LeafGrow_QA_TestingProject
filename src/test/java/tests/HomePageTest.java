@@ -4,83 +4,83 @@ import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+import pages.AnmeldenPage;
 import pages.HomePage;
 
 public class HomePageTest extends BaseTest {
 
 
     @BeforeClass
-    public void classPrecondition() {
-        new HomePage(driver).navigateToHomePage();
+    public void ClassPrecondition() {
+        new HomePage(driver).NavigateToHomePage();
     }
 
     @AfterTest
-    public void testPostconditions() {
-        new HomePage(driver).navigateToHomePage();
+    public void TestPostconditions() {
+        new HomePage(driver).NavigateToHomePage();
     }
 
     @Test
-    public void positiveAnleitungPageAccessabilityFromHeader() {
-
+    public void PositiveAnleitungPageAccessabilityFromHeader() {
+        new AnmeldenPage(driver).LoginUser();
         Assert.assertTrue(new HomePage(driver)
-                .userAnmelden()
-                .clickHomeBtn()
-                .clickAnleitungLinkInHeader()
-                .verifyAnleitungPageOpen());
+                .ClickHomeBtn()
+                .ClickAnleitungLinkInHeader()
+                .VerifyAnleitungPageOpen());
     }
 
     @Test
-    public void negativeAnleitungPageAccessabilityFromHeader() {
+    public void NegativeAnleitungPageAccessabilityFromHeader() {
         Assert.assertFalse(new HomePage(driver)
-                .clickAnleitungLinkInHeader()
-                .verifyAnleitungPageOpen());
+                .ClickAnleitungLinkInHeader()
+                .VerifyAnleitungPageOpen());
     }
 
     @Test
-    public void positiveMeineToepfePageAccessabilityFromHeader() {
+    public void PositiveMeineToepfePageAccessabilityFromHeader() {
+        new AnmeldenPage(driver).LoginUser();
         Assert.assertTrue(new HomePage(driver)
-                .userAnmelden()
-                .clickHomeBtn()
-                .clickMeineToepfeLinkInHeader()
-                .verifyMeineToepfePageOpen());
+                .ClickHomeBtn()
+                .ClickMeineToepfeLinkInHeader()
+                .VerifyMeineToepfePageOpen());
     }
 
     @Test
-    public void negativeMeineToepfePageAccessabilityFromHeader() {
+    public void NegativeMeineToepfePageAccessabilityFromHeader() {
         Assert.assertFalse(new HomePage(driver)
-                .clickMeineToepfeLinkInHeader()
-                .verifyMeineToepfePageOpen());
+                .ClickMeineToepfeLinkInHeader()
+                .VerifyMeineToepfePageOpen());
     }
 
     @Test
     public void AnmeldenPageAccessabilityFromHeader() {
         Assert.assertTrue(new HomePage(driver)
-                .clickAnmeldenlinkInHeader()
-                .verifyAnmeldenPageOpen());
+                .ClickAnmeldenBtnInHeader()
+                .VerifyAnmeldenPageOpen());
     }
 
     @Test
     public void AnmeldenPageAccessabilityFromBody() {
         Assert.assertTrue(new HomePage(driver)
-                .clickAnmeldenlinkInBody()
-                .verifyAnmeldenPageOpen());
+                .ClickAnmeldenBtnInBody()
+                .VerifyAnmeldenPageOpen());
     }
 
     @Test
     public void GesetzPageAccessabilityFromFAQ() {
         Assert.assertTrue(new HomePage(driver)
-                .clickGesetzPagelinkInFAQ()
+                .ClickGesetzPagelinkInFAQ()
                 //.switchToGesetzPage(1) //если не перенесет автоматически
-                .verifyGesetzPageOpen());
+                .VerifyGesetzPageOpen());
         //.closeCurrentTab()); //тоже по факту, как пропишут
     }
 
     @Test
     public void GesetzPageAccessabilityFromFooter() {
         Assert.assertTrue(new HomePage(driver)
-                .clickGesetzPagelinkInFooter()
+                .ClickGesetzPagelinkInFooter()
                 //.switchToGesetzPage(1) //если не перенесет автоматически
-                .verifyGesetzPageOpen());
+                .VerifyGesetzPageOpen());
         //.closeCurrentTab());  //тоже по факту, как пропишут
     }
 
