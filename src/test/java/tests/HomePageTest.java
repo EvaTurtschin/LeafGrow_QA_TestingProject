@@ -6,6 +6,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import pages.AnmeldenPage;
 import pages.HomePage;
+import utils.DataProviderClass;
 
 public class HomePageTest extends BaseTest {
 
@@ -20,9 +21,9 @@ public class HomePageTest extends BaseTest {
         new HomePage(driver).NavigateToHomePage();
     }
 
-    @Test
-    public void PositiveAnleitungPageAccessabilityFromHeader() {
-        new AnmeldenPage(driver).LoginUser();
+    @Test(dataProvider = "userCSVFile", dataProviderClass = DataProviderClass.class)
+    public void PositiveAnleitungPageAccessabilityFromHeader(String userEmail, String userPassword) {
+        new AnmeldenPage(driver).LoginUser(userEmail, userPassword);
         Assert.assertTrue(new HomePage(driver)
                 .ClickHomeBtn()
                 .ClickAnleitungLinkInHeader()
@@ -36,9 +37,9 @@ public class HomePageTest extends BaseTest {
                 .VerifyAnleitungPageOpen());
     }
 
-    @Test
-    public void PositiveMeineToepfePageAccessabilityFromHeader() {
-        new AnmeldenPage(driver).LoginUser();
+    @Test(dataProvider = "userCSVFile", dataProviderClass = DataProviderClass.class)
+    public void PositiveMeineToepfePageAccessabilityFromHeader(String userEmail, String userPassword) {
+        new AnmeldenPage(driver).LoginUser(userEmail, userPassword);
         Assert.assertTrue(new HomePage(driver)
                 .ClickHomeBtn()
                 .ClickMeineToepfeLinkInHeader()

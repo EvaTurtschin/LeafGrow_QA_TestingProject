@@ -19,11 +19,10 @@ public class RegistrationTest extends BaseTest{
 
     @AfterTest
     public void TestPostconditions () {
-        new AnmeldenPage(driver).LogoutUser();
         new HomePage(driver).NavigateToHomePage();
     }
 
-    @Test(dataProvider = "usingCSVFile", dataProviderClass = DataProviderClass.class)
+    @Test(dataProvider = "userCSVFile", dataProviderClass = DataProviderClass.class)
     public void PositiveTestRegistrationWithoutEmailConfirmation (String userName, String userEmail, String userPassword) {
         Assert.assertTrue(new RegistrationPage(driver)
                        .RegisterUser(userName, userEmail, userPassword)

@@ -56,6 +56,7 @@ public class RegistrationPage extends BasePage{
         TypeText(inputPassword, userPassword);
         Click(checkbox);
         Click(kontoErstellenBtn);
+        return new RegistrationPage(driver);
     }
 
     public boolean VerifyEmailSendingSuccess() {

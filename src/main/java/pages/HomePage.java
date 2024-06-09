@@ -11,27 +11,22 @@ public class HomePage extends BasePage{
 
     @FindBy(xpath = )
     WebElement homePageTitle;
-
     @FindBy(xpath = )
     WebElement homeBtn;
-
     @FindBy(xpath = )
     WebElement anleitungLinkHeader;
-
     @FindBy(xpath = )
     WebElement meinetoepfeLinkHeader;
-
     @FindBy(xpath = )
     WebElement anmeldenBtnHeader;
-
     @FindBy(xpath = )
     WebElement anmeldenBtnBody;
-
     @FindBy(xpath = )
     WebElement gesetzPageLinkFQA;
-
     @FindBy(xpath = )
     WebElement gesetzPageLinkFooter;
+    @FindBy(xpath = )
+    WebElement userCabinetIcon;
 
     public HomePage ClickHomeBtn() {
         Click(homeBtn);
@@ -74,4 +69,20 @@ public class HomePage extends BasePage{
         ClickWithJSScroll(gesetzPageLinkFooter, 0, 500);
         return new GesetzPage(driver);
     }
+
+    public boolean VerifyLoginSuccess(String userName) {
+        String actualRes = GetTextBase(userCabinetIcon);
+        String expectedRes = userName;
+        return IsStringsEqual(actualRes, expectedRes);
+    }
+
+    public UserCabinetPage ClickUserCabinetPageLink() {
+        Click(userCabinetIcon);
+        return new UserCabinetPage(driver);
+    }
+
+    public boolean VerifyUserUnauthorized() {
+        return IsElementDisplayed(anmeldenBtnHeader);
+    }
+
 }

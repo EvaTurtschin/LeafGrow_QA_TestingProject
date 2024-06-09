@@ -14,17 +14,19 @@ public class DataProviderClass {
 
     //TODO  сменить имя csv файла
 
-    @DataProvider(name = "usingCSVFile")
-    public static Iterator<Object[]> usingCSVFile() throws IOException {
+    @DataProvider(name = "userCSVFile")
+    public static Iterator<Object[]> userCSVFile() throws IOException {
         List<Object[]> userData = new ArrayList<>();
-        try (CSVReader reader = new CSVReader(new FileReader("src/test/resources/city.csv"))) {
+        try (CSVReader reader = new CSVReader(new FileReader("src/test/resources/userdata.csv"))) {
             List<String[]> allRows = reader.readAll();
             for (String[] row : allRows) {
                 userData.add(row);
+
             }
         } catch (IOException | CsvException e) {
             e.printStackTrace();
         }
         return userData.iterator();
     }
+
 }
