@@ -1,6 +1,5 @@
 package pages;
 
-import dev.failsafe.internal.util.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -26,29 +25,29 @@ public class AnmeldenPage extends BasePage{
 
 
 
-    public boolean VerifyAnmeldenPageOpen() {
-        String actualRes = GetTextBase(anmeldenPageTitle);
+    public boolean verifyAnmeldenPageOpen() {
+        String actualRes = getTextBase(anmeldenPageTitle);
         String expectedRes = "Schön, dass du wieder da bist!";
-        return IsStringsEqual(actualRes, expectedRes);
+        return isStringsEqual(actualRes, expectedRes);
     }
 
-    public AnmeldenPage LoginUser (String userEmail, String userPassword) {
-        new HomePage(driver).ClickAnmeldenBtnInHeader();
+    public AnmeldenPage loginUser (String userEmail, String userPassword) {
+        new HomePage(driver).clickAnmeldenBtnInHeader();
         new AnmeldenPage(driver);
-        TypeText(inputEmail, userEmail);
-        TypeText(inputPassword, userPassword);
-        ClickWithJSScroll(anmeldenBtnInForm);
+        typeText(inputEmail, userEmail);
+        typeText(inputPassword, userPassword);
+        clickWithJSScroll(anmeldenBtnInForm);
         return new AnmeldenPage(driver);
     }
 
     public AnmeldenPage checkLoginCheckbox() {
-        Click(checkbox);
+        click(checkbox);
         return new AnmeldenPage(driver);
     }
 
-    public boolean VerifyLoginUnsucceed() {
-        String actualRes = GetTextBase(errorLoginMessage);
+    public boolean verifyLoginUnsucceed() {
+        String actualRes = getTextBase(errorLoginMessage);
         String expectedRes = "Oops! Etwas ist schiefgegangen.";
-        return IsStringsEqual(actualRes, expectedRes);
+        return isStringsEqual(actualRes, expectedRes);
     }
 }

@@ -11,54 +11,54 @@ public class HomePageTest extends BaseTest {
 
 
     @BeforeClass
-    public void ClassPrecondition() {
-        new HomePage(driver).NavigateToHomePage();
+    public void classPrecondition() {
+        new HomePage(driver).navigateToHomePage();
     }
 
     @AfterMethod
-    public void TestPostconditions() {
-        new HomePage(driver).NavigateToHomePage();
+    public void testPostconditions() {
+        new HomePage(driver).navigateToHomePage();
     }
 
     @Test
-    public void PositiveAnleitungPageAccessabilityFromHeader() {
-        new HomePage(driver).ClickAnmeldenBtnInHeader();
-        new AnmeldenPage(driver).LoginUser(PositiveTestUserData.EMAIL, PositiveTestUserData.PASSWORD);
-        new HomePage(driver).ClickAnleitungLinkInHeader();
-        Assert.assertTrue(new AnleitungPage(driver).VerifyAnleitungPageOpen());
-        new HomePage(driver).ClickUserCabinetPageLink();
-        new UserCabinetPage(driver).LogoutUser();
+    public void positiveAnleitungPageAccessabilityFromHeader() {
+        new HomePage(driver).clickAnmeldenBtnInHeader();
+        new AnmeldenPage(driver).loginUser(PositiveTestUserData.EMAIL, PositiveTestUserData.PASSWORD);
+        new HomePage(driver).clickAnleitungLinkInHeader();
+        Assert.assertTrue(new AnleitungPage(driver).verifyAnleitungPageOpen());
+        new HomePage(driver).clickUserCabinetPageLink();
+        new UserCabinetPage(driver).logoutUser();
      }
 
     @Test
-    public void PositiveMeineToepfePageAccessabilityFromHeader() {
-         new HomePage(driver).ClickAnmeldenBtnInHeader();
-         new AnmeldenPage(driver).LoginUser(PositiveTestUserData.EMAIL, PositiveTestUserData.PASSWORD);
-         new HomePage(driver).ClickMeineToepfeLinkInHeader();
+    public void positiveMeineToepfePageAccessabilityFromHeader() {
+         new HomePage(driver).clickAnmeldenBtnInHeader();
+         new AnmeldenPage(driver).loginUser(PositiveTestUserData.EMAIL, PositiveTestUserData.PASSWORD);
+         new HomePage(driver).clickMeineToepfeLinkInHeader();
                 Assert.assertTrue(new MeineToepfePage(driver)
-                .VerifyMeineToepfePageOpen());
-        new HomePage(driver).ClickUserCabinetPageLink();
-        new UserCabinetPage(driver).LogoutUser();
+                .verifyMeineToepfePageOpen());
+        new HomePage(driver).clickUserCabinetPageLink();
+        new UserCabinetPage(driver).logoutUser();
     }
     @Test
-    public void AnmeldenPageAccessabilityFromBody() {
-        new HomePage(driver).ClickAnmeldenBtnInBody();
-                Assert.assertTrue(new AnmeldenPage(driver).VerifyAnmeldenPageOpen());
+    public void anmeldenPageAccessabilityFromBody() {
+        new HomePage(driver).clickAnmeldenBtnInBody();
+                Assert.assertTrue(new AnmeldenPage(driver).verifyAnmeldenPageOpen());
     }
 
     @Test
-    public void GesetzPageAccessabilityFromFAQ() {
-        new HomePage(driver).ClickGesetzPagelinkInFAQ();
+    public void gesetzPageAccessabilityFromFAQ() {
+        new HomePage(driver).clickGesetzPagelinkInFAQ();
         Assert.assertTrue(new GesetzPage(driver)
-                .VerifyGesetzPageOpen());
+                .verifyGesetzPageOpen());
     }
 
     @Test
     //TODO кликает не на текст ссылки, а на пустое место, занимаемое блоком
-    public void GesetzPageAccessabilityFromFooter() {
-        new HomePage(driver).ClickGesetzPagelinkInFooter();
+    public void gesetzPageAccessabilityFromFooter() {
+        new HomePage(driver).clickGesetzPagelinkInFooter();
         Assert.assertTrue(new GesetzPage(driver)
-                .VerifyGesetzPageOpen());
+                .verifyGesetzPageOpen());
     }
 
 //    @Test

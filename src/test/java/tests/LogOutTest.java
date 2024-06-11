@@ -11,33 +11,33 @@ import testData.PositiveTestUserData;
 
 public class LogOutTest extends BaseTest{
     @BeforeTest
-    public void TestPreconditions () {
-        new HomePage(driver).NavigateToHomePage();
-        new HomePage(driver).ClickAnmeldenBtnInHeader();
-        new AnmeldenPage(driver).LoginUser(PositiveTestUserData.EMAIL, PositiveTestUserData.PASSWORD);
+    public void testPreconditions() {
+        new HomePage(driver).navigateToHomePage();
+        new HomePage(driver).clickAnmeldenBtnInHeader();
+        new AnmeldenPage(driver).loginUser(PositiveTestUserData.EMAIL, PositiveTestUserData.PASSWORD);
     }
 
     @AfterTest
-    public void TestPostconditions () {
-        new HomePage(driver).NavigateToHomePage();
+    public void testPostconditions() {
+        new HomePage(driver).navigateToHomePage();
     }
 
     @Test
-    public void PositiveTestLogout() {
+    public void positiveTestLogout() {
         new HomePage(driver)
-                .ClickUserCabinetPageLink();
-        new UserCabinetPage(driver).LogoutUser();
+                .clickUserCabinetPageLink();
+        new UserCabinetPage(driver).logoutUser();
         Assert.assertTrue(new HomePage(driver)
-                .VerifyUserUnauthorized());
+                .verifyUserUnauthorized());
     }
 
     @Test
-    public void CanselUserLogout() {
+    public void canselUserLogout() {
         new HomePage(driver)
-                .ClickUserCabinetPageLink();
-        new UserCabinetPage(driver).LogoutUser();
+                .clickUserCabinetPageLink();
+        new UserCabinetPage(driver).logoutUser();
         Assert.assertTrue(new UserCabinetPage(driver)
-                .CancelLogout()
-                .VerifyUserAuthirized());
+                .cancelLogout()
+                .verifyUserAuthirized());
     }
 }

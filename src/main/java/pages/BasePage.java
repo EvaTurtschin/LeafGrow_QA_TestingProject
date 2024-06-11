@@ -1,32 +1,34 @@
 package pages;
 
+
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+
 public class BasePage {
     WebDriver driver;
-    //static Logger logger = LoggerFactory.getLogger(pages.BasePage.class);
+    static Logger logger = LoggerFactory.getLogger(pages.BasePage.class);
 
     public BasePage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
 
-    public void Click(WebElement element) {
+    public void click(WebElement element) {
         element.click();
     }
 
-    public void ClickWithJSScroll(WebElement element) {
+    public void clickWithJSScroll(WebElement element) {
         Actions actions = new Actions(driver);
         actions.moveToElement(element);
         actions.perform();
         element.click();
     }
 
-    protected boolean IsStringsEqual(String actualRes, String expectedRes) {
+    protected boolean isStringsEqual(String actualRes, String expectedRes) {
         if (actualRes.equals(expectedRes)) {
             return true;
         } else {
@@ -36,20 +38,20 @@ public class BasePage {
         }
     }
 
-      public String GetTextBase(WebElement element) {
+      public String getTextBase(WebElement element) {
           return element.getText().trim();
       }
 
-    public boolean IsElementDisplayed(WebElement element) {
+    public boolean isElementDisplayed(WebElement element) {
         return element.isDisplayed();
     }
 
-    public void NavigateToHomePage() {
+    public void navigateToHomePage() {
         driver.get("http://localhost:5173/");
     }
 
-    public void TypeText(WebElement element, String text) {
-        Click(element);
+    public void typeText(WebElement element, String text) {
+        click(element);
         element.clear();
         element.sendKeys(text);
     }

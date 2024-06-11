@@ -27,48 +27,48 @@ public class HomePage extends BasePage{
     WebElement userCabinetIcon;
 
 
-    public AnleitungPage ClickAnleitungLinkInHeader() {
-        ClickWithJSScroll(anleitungLinkHeader);
+    public AnleitungPage clickAnleitungLinkInHeader() {
+        clickWithJSScroll(anleitungLinkHeader);
         return new AnleitungPage(driver);
     }
 
-    public MeineToepfePage ClickMeineToepfeLinkInHeader() {
-        ClickWithJSScroll(meinetoepfeLinkHeader);
+    public MeineToepfePage clickMeineToepfeLinkInHeader() {
+        clickWithJSScroll(meinetoepfeLinkHeader);
         return new MeineToepfePage(driver);
     }
 
-    public AnmeldenPage ClickAnmeldenBtnInHeader() {
-        ClickWithJSScroll(anmeldenBtnHeader);
+    public AnmeldenPage clickAnmeldenBtnInHeader() {
+        clickWithJSScroll(anmeldenBtnHeader);
         return new AnmeldenPage(driver);
     }
 
-    public void ClickAnmeldenBtnInBody() {
-        ClickWithJSScroll(anmeldenBtnBody);
+    public void clickAnmeldenBtnInBody() {
+        clickWithJSScroll(anmeldenBtnBody);
     }
 
-    public GesetzPage ClickGesetzPagelinkInFAQ() {
-        ClickWithJSScroll(gesetzPageLinkFQA);
+    public GesetzPage clickGesetzPagelinkInFAQ() {
+        clickWithJSScroll(gesetzPageLinkFQA);
         return new GesetzPage(driver);
     }
 
-    public GesetzPage ClickGesetzPagelinkInFooter() {
-        ClickWithJSScroll(gesetzPageLinkFooter);
+    public GesetzPage clickGesetzPagelinkInFooter() {
+        clickWithJSScroll(gesetzPageLinkFooter);
         return new GesetzPage(driver);
     }
 
-    public boolean VerifyLoginSuccess(String userName) {
-        String actualRes = GetTextBase(userCabinetIcon);
+    public boolean verifyLoginSuccess(String userName) {
+        String actualRes = getTextBase(userCabinetIcon);
         String expectedRes = PositiveTestUserData.USERNAME;
-        return IsStringsEqual(actualRes, expectedRes);
+        return isStringsEqual(actualRes, expectedRes);
     }
 
-    public UserCabinetPage ClickUserCabinetPageLink() {
-        ClickWithJSScroll(userCabinetIcon);
+    public UserCabinetPage clickUserCabinetPageLink() {
+        clickWithJSScroll(userCabinetIcon);
         return new UserCabinetPage(driver);
     }
 
-    public boolean VerifyUserUnauthorized() {
-        return IsElementDisplayed(anmeldenBtnHeader);
+    public boolean verifyUserUnauthorized() {
+        return isElementDisplayed(anmeldenBtnHeader);
     }
 
 }

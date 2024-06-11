@@ -10,32 +10,32 @@ import testData.PositiveTestUserData;
 public class DeleteUserTest extends BaseTest{
 
     @BeforeSuite
-    public void TestPreconditions () {
-        new HomePage(driver).NavigateToHomePage();
-        new HomePage(driver).ClickAnmeldenBtnInHeader();
-        new AnmeldenPage(driver).LoginUser(PositiveTestUserData.EMAIL, PositiveTestUserData.PASSWORD);
+    public void testPreconditions() {
+        new HomePage(driver).navigateToHomePage();
+        new HomePage(driver).clickAnmeldenBtnInHeader();
+        new AnmeldenPage(driver).loginUser(PositiveTestUserData.EMAIL, PositiveTestUserData.PASSWORD);
     }
 
     @AfterSuite
-    public void TestPostconditions () {
-        new HomePage(driver).NavigateToHomePage();
+    public void testPostconditions() {
+        new HomePage(driver).navigateToHomePage();
     }
 
     @Test
-    public void CanselUserDeletion() {
+    public void canselUserDeletion() {
         new HomePage(driver)
-                .ClickUserCabinetPageLink();
+                .clickUserCabinetPageLink();
         Assert.assertTrue(new UserCabinetPage(driver)
-                .CancelDeletion()
-                .VerifyUserAuthirized());
+                .cancelDeletion()
+                .verifyUserAuthirized());
     }
 
     @Test
-    public void PositiveTestDeleteUser() {
+    public void positiveTestDeleteUser() {
         new HomePage(driver)
-                .ClickUserCabinetPageLink();
-        new UserCabinetPage(driver).DeleteUser();
+                .clickUserCabinetPageLink();
+        new UserCabinetPage(driver).deleteUser();
         Assert.assertTrue(new HomePage(driver)
-                .VerifyUserUnauthorized());
+                .verifyUserUnauthorized());
     }
 }

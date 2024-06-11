@@ -11,9 +11,9 @@ public class MeineToepfePage extends BasePage{
     WebElement meineToepfePageTitle;
 
 
-    public boolean VerifyMeineToepfePageOpen() {
-        String actualRes = GetTextBase(meineToepfePageTitle);
+    public boolean verifyMeineToepfePageOpen() {
+        String actualRes = getTextBase(meineToepfePageTitle);
         String expectedRes = "MyPots";
-        return IsStringsEqual(actualRes, expectedRes);
+        return isStringsEqual(actualRes, expectedRes);
     }
 }

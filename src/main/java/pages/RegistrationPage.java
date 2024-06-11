@@ -51,66 +51,64 @@ public class RegistrationPage extends BasePage{
     @FindBy(xpath = "//div[text()='Checkbox muss akzeptiert werden']")
     WebElement unsignedCheckboxErrorMessage;
 
-    public RegistrationPage RegisterUser(String userName, String userEmail, String userPassword) {
-        new AnmeldenPage(driver).Click(regisrterierenBtn);
+    public RegistrationPage registerUser(String userName, String userEmail, String userPassword) {
+        new AnmeldenPage(driver).click(regisrterierenBtn);
         new RegistrationPage(driver);
-        TypeText(inputBenutzerName, userName);
-        TypeText(inputEmail, userEmail);
-        TypeText(inputPassword, userPassword);
-        Click(checkbox);
-        Click(kontoErstellenBtn);
+        typeText(inputBenutzerName, userName);
+        typeText(inputEmail, userEmail);
+        typeText(inputPassword, userPassword);
+        click(checkbox);
+        click(kontoErstellenBtn);
         return new RegistrationPage(driver);
     }
 
-    public boolean VerifyEmailSendingSuccess() {
-        String actualRes = GetTextBase(emailSendingMessage);
+    public boolean verifyEmailSendingSuccess() {
+        String actualRes = getTextBase(emailSendingMessage);
         String expectedRes = "Wir haben dir eine E-Mail mit dem Verifizierungslink geschickt.";
-        return IsStringsEqual(actualRes, expectedRes);
+        return isStringsEqual(actualRes, expectedRes);
     }
 
-//    public boolean VerifyUserRegisterationSuccess() {
-//        String actualRes = GetTextBase(registrationConfirmedMessage);
+//    public boolean verifyUserRegisterationSuccess() {
+//        String actualRes = getTextBase(registrationConfirmedMessage);
 //        String expectedRes = "Du hast dich erfolgreich registriert";
-//        return IsStringsEqual(actualRes, expectedRes);
+//        return isStringsEqual(actualRes, expectedRes);
 //    }
 
-    public boolean VerifyInvalidEmailErrorMessage() {
-        String actualRes = GetTextBase(invalidEmailErrorMessage);
+    public boolean verifyInvalidEmailErrorMessage() {
+        String actualRes = getTextBase(invalidEmailErrorMessage);
         String expectedRes = "Ungültige E-Mail";
-        return IsStringsEqual(actualRes, expectedRes);
+        return isStringsEqual(actualRes, expectedRes);
     }
 
-    public boolean VerifyInvalidPasswordErrorMessage() {
-        String actualRes = GetTextBase(invalidPasswordErrorMessage);
+    public boolean verifyInvalidPasswordErrorMessage() {
+        String actualRes = getTextBase(invalidPasswordErrorMessage);
         String expectedRes1 = "Mindestens 8 Zeichen";
-        //TODO String expectedRes2 = "Mindestens 1 Ziffer";
-        //TODO String expectedRes3 = "Mindestens 1 Kleinbuchstabe";
-        //TODO String expectedRes4 = "Mindestens 1 Großbuchstabe";
-        return IsStringsEqual(actualRes, expectedRes1);
+        //TODO изменят сообщение о неверной форме пароля
+        return isStringsEqual(actualRes, expectedRes1);
     }
 
 
-    public boolean VerifyInvalidUsernameErrorMessage() {
-        String actualRes = GetTextBase(invalidUsernameErrorMessage);
+    public boolean verifyInvalidUsernameErrorMessage() {
+        String actualRes = getTextBase(invalidUsernameErrorMessage);
         String expectedRes = "Mindestens 2 Zeichen";
-        return IsStringsEqual(actualRes, expectedRes);
+        return isStringsEqual(actualRes, expectedRes);
     }
 
-//    public boolean VerifyAlreadyExistedEmailErrorMessage() {
-//        String actualRes = GetTextBase(existedEmailErrorMessage);
+//    public boolean verifyAlreadyExistedEmailErrorMessage() {
+//        String actualRes = getTextBase(existedEmailErrorMessage);
 //        String expectedRes = "Dieser Email wird bereits verwendet. Bitte, verwende einen anderen Email";
-//        return IsStringsEqual(actualRes, expectedRes);
+//        return isStringsEqual(actualRes, expectedRes);
 //    }
 //
-//    public boolean VerifyAlreadyExistedUsernameErrorMessage() {
-//        String actualRes = GetTextBase(existedUsernameErrorMessage);
+//    public boolean verifyAlreadyExistedUsernameErrorMessage() {
+//        String actualRes = getTextBase(existedUsernameErrorMessage);
 //        String expectedRes = "Dieser Benutzername wird bereits verwendet. Bitte, verwende einen anderen Benutzernamen";
-//        return IsStringsEqual(actualRes, expectedRes);
+//        return isStringsEqual(actualRes, expectedRes);
 //    }
 
-    public boolean VerifyUnsignetCheckboxErrorMessage() {
-        String actualRes = GetTextBase(unsignedCheckboxErrorMessage);
+    public boolean verifyUnsignetCheckboxErrorMessage() {
+        String actualRes = getTextBase(unsignedCheckboxErrorMessage);
         String expectedRes = "Checkbox muss akzeptiert werden";
-        return IsStringsEqual(actualRes, expectedRes);
+        return isStringsEqual(actualRes, expectedRes);
     }
 }

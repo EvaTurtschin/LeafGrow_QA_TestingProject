@@ -10,9 +10,9 @@ public class AnleitungPage extends BasePage{
     @FindBy(xpath = "//h1[text()='Wesentliche Tipps für den erfolgreichen Cannabisanbau']")
     WebElement anleitungPageTitle;
 
-    public boolean VerifyAnleitungPageOpen() {
-        String actualRes = GetTextBase(anleitungPageTitle);
+    public boolean verifyAnleitungPageOpen() {
+        String actualRes = getTextBase(anleitungPageTitle);
         String expectedRes = "Wesentliche Tipps für den erfolgreichen Cannabisanbau";
-        return IsStringsEqual(actualRes, expectedRes);
+        return isStringsEqual(actualRes, expectedRes);
     }
 }

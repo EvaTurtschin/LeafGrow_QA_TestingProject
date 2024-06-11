@@ -2,9 +2,7 @@ package tests;
 
 import org.testng.annotations.AfterMethod;
 import testData.PositiveTestUserData;
-import utils.DataProviders;
 import org.testng.Assert;
-import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import pages.HomePage;
@@ -13,21 +11,21 @@ import pages.RegistrationPage;
 public class RegistrationTest extends BaseTest{
 
     @BeforeTest
-    public void TestPreconditions () {
-        new HomePage(driver).NavigateToHomePage();
-        new HomePage(driver).ClickAnmeldenBtnInHeader();
+    public void testPreconditions() {
+        new HomePage(driver).navigateToHomePage();
+        new HomePage(driver).clickAnmeldenBtnInHeader();
     }
 
     @AfterMethod
-    public void TestPostconditions () {
-        new HomePage(driver).NavigateToHomePage();
+    public void testPostconditions() {
+        new HomePage(driver).navigateToHomePage();
     }
 
     @Test
-    public void PositiveTestRegistrationWithoutEmailConfirmation () {
+    public void positiveTestRegistrationWithoutEmailConfirmation() {
         Assert.assertTrue(new RegistrationPage(driver)
-                       .RegisterUser(PositiveTestUserData.USERNAME, PositiveTestUserData.EMAIL, PositiveTestUserData.PASSWORD)
-                       .VerifyEmailSendingSuccess());
+                       .registerUser(PositiveTestUserData.USERNAME, PositiveTestUserData.EMAIL, PositiveTestUserData.PASSWORD)
+                       .verifyEmailSendingSuccess());
     }
 
 //    @Test

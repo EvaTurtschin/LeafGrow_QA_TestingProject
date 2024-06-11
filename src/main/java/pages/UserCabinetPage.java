@@ -22,31 +22,31 @@ public class UserCabinetPage extends BasePage{
     @FindBy(xpath = "//div[@class='css-11u27a6']")
     WebElement userCabinetIcon;
 
-    public void LogoutUser() {
-        new HomePage(driver).ClickUserCabinetPageLink();
+    public void logoutUser() {
+        new HomePage(driver).clickUserCabinetPageLink();
         new UserCabinetPage(driver);
-        ClickWithJSScroll(abmeldenBtn);
-        Click(confirmAbmeldenBtn);
+        clickWithJSScroll(abmeldenBtn);
+        click(confirmAbmeldenBtn);
     }
 
-    public void DeleteUser() {
-        Click(deleteKontoBtn);
-        Click(confirmDeletKontoBtn);
+    public void deleteUser() {
+        click(deleteKontoBtn);
+        click(confirmDeletKontoBtn);
     }
 
-    public UserCabinetPage CancelDeletion() {
-        ClickWithJSScroll(deleteKontoBtn);
-        ClickWithJSScroll(cancelDelCross);
+    public UserCabinetPage cancelDeletion() {
+        clickWithJSScroll(deleteKontoBtn);
+        clickWithJSScroll(cancelDelCross);
         return new UserCabinetPage(driver);
     }
 
-    public boolean VerifyUserAuthirized() {
-        return IsElementDisplayed(userCabinetIcon);
+    public boolean verifyUserAuthirized() {
+        return isElementDisplayed(userCabinetIcon);
     }
 
-    public UserCabinetPage CancelLogout() {
-        Click(abmeldenBtn);
-        Click(cancelAbmeldenCross);
+    public UserCabinetPage cancelLogout() {
+        click(abmeldenBtn);
+        click(cancelAbmeldenCross);
         return new UserCabinetPage(driver);
     }
 

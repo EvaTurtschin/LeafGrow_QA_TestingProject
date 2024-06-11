@@ -8,34 +8,33 @@ import pages.AnmeldenPage;
 import pages.HomePage;
 import pages.UserCabinetPage;
 import testData.PositiveTestUserData;
-import utils.DataProviders;
 
 public class LoginTest extends BaseTest{
     @BeforeTest
-    public void TestPreconditions () {
-        new HomePage(driver).NavigateToHomePage();
-        new HomePage(driver).ClickAnmeldenBtnInHeader();
+    public void testPreconditions() {
+        new HomePage(driver).navigateToHomePage();
+        new HomePage(driver).clickAnmeldenBtnInHeader();
     }
 
     @AfterMethod
-    public void TestPostconditions () {
-        new UserCabinetPage(driver).LogoutUser();
-        new HomePage(driver).NavigateToHomePage();
+    public void testPostconditions() {
+        new UserCabinetPage(driver).logoutUser();
+        new HomePage(driver).navigateToHomePage();
     }
 
     @Test
-    public void PositiveTestLoginWithCheckbox() {
-        new AnmeldenPage(driver).LoginUser(PositiveTestUserData.EMAIL, PositiveTestUserData.PASSWORD)
+    public void positiveTestLoginWithCheckbox() {
+        new AnmeldenPage(driver).loginUser(PositiveTestUserData.EMAIL, PositiveTestUserData.PASSWORD)
                 .checkLoginCheckbox();
         Assert.assertTrue(new HomePage(driver)
-                .VerifyLoginSuccess(PositiveTestUserData.USERNAME));
+                .verifyLoginSuccess(PositiveTestUserData.USERNAME));
     }
 
     @Test
-    public void PositiveTestLoginNoCheckbox() {
-        new AnmeldenPage(driver).LoginUser(PositiveTestUserData.EMAIL, PositiveTestUserData.PASSWORD);
+    public void positiveTestLoginNoCheckbox() {
+        new AnmeldenPage(driver).loginUser(PositiveTestUserData.EMAIL, PositiveTestUserData.PASSWORD);
         Assert.assertTrue(new HomePage(driver)
-                .VerifyLoginSuccess(PositiveTestUserData.USERNAME));
+                .verifyLoginSuccess(PositiveTestUserData.USERNAME));
     }
 
 //    @Test(dataProvider = "userCSVFile", dataProviderClass = DataProviders.class)
