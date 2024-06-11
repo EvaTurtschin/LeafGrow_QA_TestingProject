@@ -10,23 +10,12 @@ import java.util.List;
 public class GesetzPage extends BasePage{
     public GesetzPage(WebDriver driver) { super(driver);}
 
-    @FindBy(xpath = )
+    @FindBy(xpath = "//h3[text()=' Erlaubter Besitz von Cannabis ']")
     WebElement gesetzPageTitle;
 
     public boolean VerifyGesetzPageOpen() {
         String actualRes = GetTextBase(gesetzPageTitle);
-        String expectedRes = "Gesetzliche Informationen";
+        String expectedRes = "Erlaubter Besitz von Cannabis";
         return IsStringsEqual(actualRes, expectedRes);
     }
-
-    public HomePage switchToHomePage(int index) {
-        List<String> windows = new ArrayList<>(driver.getWindowHandles());
-        driver.switchTo().window(windows.get(index));
-        return new HomePage(driver);
-    }
-
-//    public GesetzPage closeCurrentTab() {
-//        driver.close();
-//        return this;
-//    }
 }

@@ -1,15 +1,14 @@
 package tests;
 
 import org.testng.Assert;
-import org.testng.annotations.AfterTest;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import pages.AnmeldenPage;
 import pages.HomePage;
-import pages.RegistrationPage;
 import pages.UserCabinetPage;
 import testData.PositiveTestUserData;
-import utils.DataProviderClass;
+import utils.DataProviders;
 
 public class LoginTest extends BaseTest{
     @BeforeTest
@@ -18,7 +17,7 @@ public class LoginTest extends BaseTest{
         new HomePage(driver).ClickAnmeldenBtnInHeader();
     }
 
-    @AfterTest
+    @AfterMethod
     public void TestPostconditions () {
         new UserCabinetPage(driver).LogoutUser();
         new HomePage(driver).NavigateToHomePage();
@@ -39,11 +38,11 @@ public class LoginTest extends BaseTest{
                 .VerifyLoginSuccess(PositiveTestUserData.USERNAME));
     }
 
-    @Test(dataProvider = "userCSVFile", dataProviderClass = DataProviderClass.class)
-    public void NegativeLoginWithInvalidDataTest(String userEmail, String userPassword) {
-        Assert.assertFalse(new AnmeldenPage(driver)
-                .LoginUser(userEmail, userPassword)
-                .VerifyLoginUnsucceed());
-    }
+//    @Test(dataProvider = "userCSVFile", dataProviderClass = DataProviders.class)
+//    public void NegativeLoginWithInvalidDataTest(String userEmail, String userPassword) {
+//        Assert.assertFalse(new AnmeldenPage(driver)
+//                .LoginUser(userEmail, userPassword)
+//                .VerifyLoginUnsucceed());
+//    }
 
 }

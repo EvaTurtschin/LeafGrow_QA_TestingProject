@@ -8,38 +8,36 @@ import org.openqa.selenium.support.FindBy;
 public class AnmeldenPage extends BasePage{
     public AnmeldenPage(WebDriver driver) { super(driver);}
 
-    @FindBy(xpath = )
+    @FindBy(xpath = "//h3[text()='Schön, dass du wieder da bist!']")
     WebElement anmeldenPageTitle;
-    @FindBy(xpath = )
+
+    @FindBy(xpath = "//button[@type='button' and text()='Anmelden']")
     WebElement anmeldenBtnInHeader;
-    @FindBy(xpath = )
+    @FindBy(xpath = "//input[@name='email']")
     WebElement inputEmail;
-    @FindBy(xpath = )
+    @FindBy(xpath = "//input[@name='password']")
     WebElement inputPassword;
-    @FindBy(xpath = )
+    @FindBy(xpath = "//input[@type='checkbox']")
     WebElement checkbox;
-    @FindBy(xpath = )
+    @FindBy(xpath = "//button[@type='submit']")
     WebElement anmeldenBtnInForm;
-    @FindBy(xpath = )
-    WebElement abmeldenBtn;
-    @FindBy(xpath = )
-    WebElement confirmAbmeldenBtn;
-    @FindBy(xpath = )
+    @FindBy(xpath = "//h3[text()='Oops! Etwas ist schiefgegangen.']")
     WebElement errorLoginMessage;
 
 
 
     public boolean VerifyAnmeldenPageOpen() {
         String actualRes = GetTextBase(anmeldenPageTitle);
-        String expectedRes = "Anmelden";
+        String expectedRes = "Schön, dass du wieder da bist!";
         return IsStringsEqual(actualRes, expectedRes);
     }
 
     public AnmeldenPage LoginUser (String userEmail, String userPassword) {
-        Click(anmeldenBtnInHeader);
+        new HomePage(driver).ClickAnmeldenBtnInHeader();
+        new AnmeldenPage(driver);
         TypeText(inputEmail, userEmail);
         TypeText(inputPassword, userPassword);
-        Click(anmeldenBtnInForm);
+        ClickWithJSScroll(anmeldenBtnInForm);
         return new AnmeldenPage(driver);
     }
 

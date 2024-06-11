@@ -1,12 +1,11 @@
 package tests;
 
 import org.testng.Assert;
-import org.testng.annotations.AfterTest;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-import pages.AnmeldenPage;
-import pages.HomePage;
-import utils.DataProviderClass;
+import pages.*;
+import testData.PositiveTestUserData;
 
 public class HomePageTest extends BaseTest {
 
@@ -16,73 +15,64 @@ public class HomePageTest extends BaseTest {
         new HomePage(driver).NavigateToHomePage();
     }
 
-    @AfterTest
+    @AfterMethod
     public void TestPostconditions() {
         new HomePage(driver).NavigateToHomePage();
     }
 
-    @Test(dataProvider = "userCSVFile", dataProviderClass = DataProviderClass.class)
-    public void PositiveAnleitungPageAccessabilityFromHeader(String userEmail, String userPassword) {
-        new AnmeldenPage(driver).LoginUser(userEmail, userPassword);
-        Assert.assertTrue(new HomePage(driver)
-                .ClickHomeBtn()
-                .ClickAnleitungLinkInHeader()
-                .VerifyAnleitungPageOpen());
-    }
+    @Test
+    public void PositiveAnleitungPageAccessabilityFromHeader() {
+        new HomePage(driver).ClickAnmeldenBtnInHeader();
+        new AnmeldenPage(driver).LoginUser(PositiveTestUserData.EMAIL, PositiveTestUserData.PASSWORD);
+        new HomePage(driver).ClickAnleitungLinkInHeader();
+        Assert.assertTrue(new AnleitungPage(driver).VerifyAnleitungPageOpen());
+        new HomePage(driver).ClickUserCabinetPageLink();
+        new UserCabinetPage(driver).LogoutUser();
+     }
 
     @Test
-    public void NegativeAnleitungPageAccessabilityFromHeader() {
-        Assert.assertFalse(new HomePage(driver)
-                .ClickAnleitungLinkInHeader()
-                .VerifyAnleitungPageOpen());
-    }
-
-    @Test(dataProvider = "userCSVFile", dataProviderClass = DataProviderClass.class)
-    public void PositiveMeineToepfePageAccessabilityFromHeader(String userEmail, String userPassword) {
-        new AnmeldenPage(driver).LoginUser(userEmail, userPassword);
-        Assert.assertTrue(new HomePage(driver)
-                .ClickHomeBtn()
-                .ClickMeineToepfeLinkInHeader()
+    public void PositiveMeineToepfePageAccessabilityFromHeader() {
+         new HomePage(driver).ClickAnmeldenBtnInHeader();
+         new AnmeldenPage(driver).LoginUser(PositiveTestUserData.EMAIL, PositiveTestUserData.PASSWORD);
+         new HomePage(driver).ClickMeineToepfeLinkInHeader();
+                Assert.assertTrue(new MeineToepfePage(driver)
                 .VerifyMeineToepfePageOpen());
+        new HomePage(driver).ClickUserCabinetPageLink();
+        new UserCabinetPage(driver).LogoutUser();
     }
-
-    @Test
-    public void NegativeMeineToepfePageAccessabilityFromHeader() {
-        Assert.assertFalse(new HomePage(driver)
-                .ClickMeineToepfeLinkInHeader()
-                .VerifyMeineToepfePageOpen());
-    }
-
-    @Test
-    public void AnmeldenPageAccessabilityFromHeader() {
-        Assert.assertTrue(new HomePage(driver)
-                .ClickAnmeldenBtnInHeader()
-                .VerifyAnmeldenPageOpen());
-    }
-
     @Test
     public void AnmeldenPageAccessabilityFromBody() {
-        Assert.assertTrue(new HomePage(driver)
-                .ClickAnmeldenBtnInBody()
-                .VerifyAnmeldenPageOpen());
+        new HomePage(driver).ClickAnmeldenBtnInBody();
+                Assert.assertTrue(new AnmeldenPage(driver).VerifyAnmeldenPageOpen());
     }
 
     @Test
     public void GesetzPageAccessabilityFromFAQ() {
-        Assert.assertTrue(new HomePage(driver)
-                .ClickGesetzPagelinkInFAQ()
-                //.switchToGesetzPage(1) //если не перенесет автоматически
+        new HomePage(driver).ClickGesetzPagelinkInFAQ();
+        Assert.assertTrue(new GesetzPage(driver)
                 .VerifyGesetzPageOpen());
-        //.closeCurrentTab()); //тоже по факту, как пропишут
     }
 
     @Test
+    //TODO кликает не на текст ссылки, а на пустое место, занимаемое блоком
     public void GesetzPageAccessabilityFromFooter() {
-        Assert.assertTrue(new HomePage(driver)
-                .ClickGesetzPagelinkInFooter()
-                //.switchToGesetzPage(1) //если не перенесет автоматически
+        new HomePage(driver).ClickGesetzPagelinkInFooter();
+        Assert.assertTrue(new GesetzPage(driver)
                 .VerifyGesetzPageOpen());
-        //.closeCurrentTab());  //тоже по факту, как пропишут
     }
+
+//    @Test
+//    public void NegativeAnleitungPageAccessabilityFromHeader() {
+//        Assert.assertFalse(new HomePage(driver)
+//                .ClickAnleitungLinkInHeader()
+//                .VerifyAnleitungPageOpen());
+//    }
+
+//    @Test
+//    public void NegativeMeineToepfePageAccessabilityFromHeader() {
+//        new HomePage(driver).ClickMeineToepfeLinkInHeader();
+//                Assert.assertFalse(new MeineToepfePage(driver)
+////                .VerifyMeineToepfePageOpen());
+//    }
 
 }

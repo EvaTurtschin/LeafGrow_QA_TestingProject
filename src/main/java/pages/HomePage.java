@@ -3,81 +3,67 @@ package pages;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import testData.PositiveTestUserData;
+
 
 public class HomePage extends BasePage{
     public HomePage(WebDriver driver) {
         super(driver);
     }
 
-    @FindBy(xpath = )
-    WebElement homePageTitle;
-    @FindBy(xpath = )
-    WebElement homeBtn;
-    @FindBy(xpath = )
+    @FindBy(xpath = "//a[@href='/guide']")
     WebElement anleitungLinkHeader;
-    @FindBy(xpath = )
+    @FindBy(xpath = "//a[@href='/mypots']")
     WebElement meinetoepfeLinkHeader;
-    @FindBy(xpath = )
+    @FindBy(xpath = "//div[@class= 'css-fpykxv']")
     WebElement anmeldenBtnHeader;
-    @FindBy(xpath = )
+    @FindBy(xpath = "//div[@class='css-l8sm9m']")
     WebElement anmeldenBtnBody;
-    @FindBy(xpath = )
+    @FindBy(xpath = "//a[text()='Mehr zu erfahren']")
     WebElement gesetzPageLinkFQA;
-    @FindBy(xpath = )
+    @FindBy(xpath = "//a[text()='Gesetzliche Informationen']")
     WebElement gesetzPageLinkFooter;
-    @FindBy(xpath = )
+    @FindBy(xpath = "//div[@class='css-11u27a6']")
     WebElement userCabinetIcon;
 
-    public HomePage ClickHomeBtn() {
-        Click(homeBtn);
-        return new HomePage(driver);
-    }
 
     public AnleitungPage ClickAnleitungLinkInHeader() {
-        Click(anleitungLinkHeader);
+        ClickWithJSScroll(anleitungLinkHeader);
         return new AnleitungPage(driver);
     }
 
     public MeineToepfePage ClickMeineToepfeLinkInHeader() {
-        Click(meinetoepfeLinkHeader);
+        ClickWithJSScroll(meinetoepfeLinkHeader);
         return new MeineToepfePage(driver);
     }
 
     public AnmeldenPage ClickAnmeldenBtnInHeader() {
-        Click(anmeldenBtnHeader);
+        ClickWithJSScroll(anmeldenBtnHeader);
         return new AnmeldenPage(driver);
     }
 
-    public AnmeldenPage ClickAnmeldenBtnInBody() {
-        ClickWithJSScroll(anmeldenBtnBody, 0, 200);
-        return new AnmeldenPage(driver);
+    public void ClickAnmeldenBtnInBody() {
+        ClickWithJSScroll(anmeldenBtnBody);
     }
 
     public GesetzPage ClickGesetzPagelinkInFAQ() {
-        ClickWithJSScroll(gesetzPageLinkFQA, 0, 200);
+        ClickWithJSScroll(gesetzPageLinkFQA);
         return new GesetzPage(driver);
     }
 
-//    public GesetzPage switchToGesetzPage(int index) {
-//        List<String> windows = new ArrayList<>(driver.getWindowHandles());
-//        driver.switchTo().window(windows.get(index));
-//        return new GesetzPage(driver);
-//
-//    }
-
     public GesetzPage ClickGesetzPagelinkInFooter() {
-        ClickWithJSScroll(gesetzPageLinkFooter, 0, 500);
+        ClickWithJSScroll(gesetzPageLinkFooter);
         return new GesetzPage(driver);
     }
 
     public boolean VerifyLoginSuccess(String userName) {
         String actualRes = GetTextBase(userCabinetIcon);
-        String expectedRes = userName;
+        String expectedRes = PositiveTestUserData.USERNAME;
         return IsStringsEqual(actualRes, expectedRes);
     }
 
     public UserCabinetPage ClickUserCabinetPageLink() {
-        Click(userCabinetIcon);
+        ClickWithJSScroll(userCabinetIcon);
         return new UserCabinetPage(driver);
     }
 

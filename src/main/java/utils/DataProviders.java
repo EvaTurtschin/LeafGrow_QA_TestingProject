@@ -10,12 +10,12 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class DataProviderClass {
+public class DataProviders {
 
     //TODO  сменить имя csv файла
 
-    @DataProvider(name = "userCSVFile")
-    public static Iterator<Object[]> userCSVFile() throws IOException {
+    @DataProvider
+    public Iterator<Object[]> userCSVFile() throws IOException {
         List<Object[]> userData = new ArrayList<>();
         try (CSVReader reader = new CSVReader(new FileReader("src/test/resources/userdata.csv"))) {
             List<String[]> allRows = reader.readAll();
@@ -28,5 +28,7 @@ public class DataProviderClass {
         }
         return userData.iterator();
     }
+
+
 
 }

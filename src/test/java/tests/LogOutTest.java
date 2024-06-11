@@ -8,7 +8,6 @@ import pages.AnmeldenPage;
 import pages.HomePage;
 import pages.UserCabinetPage;
 import testData.PositiveTestUserData;
-import utils.DataProviderClass;
 
 public class LogOutTest extends BaseTest{
     @BeforeTest
@@ -30,5 +29,15 @@ public class LogOutTest extends BaseTest{
         new UserCabinetPage(driver).LogoutUser();
         Assert.assertTrue(new HomePage(driver)
                 .VerifyUserUnauthorized());
+    }
+
+    @Test
+    public void CanselUserLogout() {
+        new HomePage(driver)
+                .ClickUserCabinetPageLink();
+        new UserCabinetPage(driver).LogoutUser();
+        Assert.assertTrue(new UserCabinetPage(driver)
+                .CancelLogout()
+                .VerifyUserAuthirized());
     }
 }
