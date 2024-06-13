@@ -9,10 +9,19 @@ public class AnleitungPage extends BasePage{
 
     @FindBy(xpath = "//h1[text()='Wesentliche Tipps für den erfolgreichen Cannabisanbau']")
     WebElement anleitungPageTitle;
+    @FindBy(xpath = "//p[@class='css-db06rd']")
+    WebElement pageAccessError;
 
     public boolean verifyAnleitungPageOpen() {
         String actualRes = getTextBase(anleitungPageTitle);
         String expectedRes = "Wesentliche Tipps für den erfolgreichen Cannabisanbau";
         return isStringsEqual(actualRes, expectedRes);
     }
+
+    public boolean verifyAnleitungPageAccessError() {
+        String actualRes = getTextBase(pageAccessError);
+        String expectedRes = "Diese Seite ist nur für registrierte und eingeloggte Benutzer/innen verfügbar";
+        return isStringsEqual(actualRes, expectedRes);
+    }
+
 }

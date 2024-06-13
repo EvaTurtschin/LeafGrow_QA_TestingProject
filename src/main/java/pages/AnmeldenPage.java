@@ -9,9 +9,6 @@ public class AnmeldenPage extends BasePage{
 
     @FindBy(xpath = "//h3[text()='Schön, dass du wieder da bist!']")
     WebElement anmeldenPageTitle;
-
-    @FindBy(xpath = "//button[@type='button' and text()='Anmelden']")
-    WebElement anmeldenBtnInHeader;
     @FindBy(xpath = "//input[@name='email']")
     WebElement inputEmail;
     @FindBy(xpath = "//input[@name='password']")

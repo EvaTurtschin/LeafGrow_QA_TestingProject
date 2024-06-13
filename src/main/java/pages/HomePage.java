@@ -26,7 +26,6 @@ public class HomePage extends BasePage{
     @FindBy(xpath = "//div[@class='css-11u27a6']")
     WebElement userCabinetIcon;
 
-
     public AnleitungPage clickAnleitungLinkInHeader() {
         clickWithJSScroll(anleitungLinkHeader);
         return new AnleitungPage(driver);

@@ -7,6 +7,7 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import pages.HomePage;
 import pages.RegistrationPage;
+import utils.DataProviders;
 
 public class RegistrationTest extends BaseTest{
 
@@ -18,57 +19,61 @@ public class RegistrationTest extends BaseTest{
 
     @AfterMethod
     public void testPostconditions() {
-        new HomePage(driver).navigateToHomePage();
+        new RegistrationPage(driver).clickToAnmeldenBtnInHeader();
     }
 
-    @Test
-    public void positiveTestRegistrationWithoutEmailConfirmation() {
+    @Test(dataProvider = "positiveRegistration", dataProviderClass = DataProviders.class)
+    public void positiveTestRegistrationWithoutEmailConfirmation(String userName, String userEmail, String userPassword) {
         Assert.assertTrue(new RegistrationPage(driver)
-                       .registerUser(PositiveTestUserData.USERNAME, PositiveTestUserData.EMAIL, PositiveTestUserData.PASSWORD)
+                       .registerUser(userName, userEmail, userPassword)
                        .verifyEmailSendingSuccess());
     }
 
-//    @Test
-//    public void RegistrationWithInvalidEmail () {
-//        Assert.assertTrue(new RegistrationPage(driver)
-//                .RegisterUser("J", "mail", "Aaa12345")
-//                .VerifyInvalidEmailErrorMessage());
-//    }
+    @Test(dataProvider = "invalidEmail", dataProviderClass = DataProviders.class)
+    public void RegistrationWithInvalidEmail (String userName, String userEmail, String userPassword) {
+        Assert.assertTrue(new RegistrationPage(driver)
+                .registerUser(userName, userEmail, userPassword)
+                .verifyInvalidEmailErrorMessage());
+    }
 
-//    @Test
-//    public void RegistrationWithInvalidPassword () {
-//        Assert.assertTrue(new RegistrationPage(driver)
-//                .RegisterUser("J", "mail", "Aaa12345")
-//                .VerifyInvalidPasswordErrorMessage());
-//    }
+    @Test(dataProvider = "invalidPassword", dataProviderClass = DataProviders.class)
+    public void RegistrationWithInvalidPassword (String userName, String userEmail, String userPassword) {
+        Assert.assertTrue(new RegistrationPage(driver)
+                .registerUser(userName, userEmail, userPassword)
+                .verifyInvalidPasswordErrorMessage());
+    }
 
-//    @Test
-//    public void RegistrationWithInvalidUsername () {
-//        Assert.assertTrue(new RegistrationPage(driver)
-//                .RegisterUser("J", "mail", "Aaa12345")
-//                .VerifyInvalidUsernameErrorMessage());
-//    }
+    @Test(dataProvider = "invalidUsername", dataProviderClass = DataProviders.class)
+    public void RegistrationWithInvalidUsername (String userName, String userEmail, String userPassword) {
+        Assert.assertTrue(new RegistrationPage(driver)
+                .registerUser(userName, userEmail, userPassword)
+                .verifyInvalidUsernameErrorMessage());
+    }
 
-//    @Test
-//    public void RegistrationWithAlreadyExistedEmail () {
-//        Assert.assertTrue(new RegistrationPage(driver)
-//                .RegisterUser("J", "mail", "Aaa12345")
-//                .VerifyAlreadyExistedEmailErrorMessage());
-//    }
+    @Test
+    public void RegistrationWithAlreadyExistedEmail () {
+        Assert.assertTrue(new RegistrationPage(driver)
+                .registerUser(PositiveTestUserData.USERNAME, PositiveTestUserData.EMAIL, PositiveTestUserData.PASSWORD)
+                        .clickToAnmeldenBtnInHeader()
+                        .registerUser("KirshCraft", PositiveTestUserData.EMAIL, "Aaa12345")
+                .verifyAlreadyExistedEmailErrorMessage());
+    }
 
-//    @Test
-//    public void RegistrationWithAlreadyExistedUsername () {
-//        Assert.assertTrue(new RegistrationPage(driver)
-//                .RegisterUser("J", "mail", "Aaa12345")
-//                .VerifyAlreadyExistedUsernameErrorMessage());
-//    }
+    @Test
+    public void RegistrationWithAlreadyExistedUsername () {
+        Assert.assertTrue(new RegistrationPage(driver)
+                .registerUser(PositiveTestUserData.USERNAME, PositiveTestUserData.EMAIL, PositiveTestUserData.PASSWORD)
+                .clickToAnmeldenBtnInHeader()
+                .registerUser(PositiveTestUserData.USERNAME, "test500@mail.com", "Aaa12345")
+                .verifyAlreadyExistedUsernameErrorMessage());
+    }
 
-//    @Test
-//    public void RegistrationWithUnsignetCheckbox () {
-//        Assert.assertTrue(new RegistrationPage(driver)
-//                .RegisterUser("J", "mail", "Aaa12345")
-//                .VerifyUnsignetCheckboxErrorMessage());
-//    }
+    @Test
+    public void RegistrationWithUnsignetCheckbox () {
+        Assert.assertTrue(new RegistrationPage(driver)
+                .registerNoCeckbox("Turtle", "test600@mail.com", "Aaa12345")
+                .verifyUnsignetCheckboxErrorMessage());
+    }
 
 
 

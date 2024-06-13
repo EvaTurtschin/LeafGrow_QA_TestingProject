@@ -37,11 +37,4 @@ public class LoginTest extends BaseTest{
                 .verifyLoginSuccess(PositiveTestUserData.USERNAME));
     }
 
-//    @Test(dataProvider = "userCSVFile", dataProviderClass = DataProviders.class)
-//    public void NegativeLoginWithInvalidDataTest(String userEmail, String userPassword) {
-//        Assert.assertFalse(new AnmeldenPage(driver)
-//                .LoginUser(userEmail, userPassword)
-//                .VerifyLoginUnsucceed());
-//    }
-
 }

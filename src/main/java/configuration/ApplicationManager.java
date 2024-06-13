@@ -21,21 +21,21 @@ public class ApplicationManager {
     }
 
     public WebDriver init() {
-        if (browser.equals("chrome")) {
-            ChromeOptions chromeOptions = new ChromeOptions();
-            chromeOptions.addArguments("--lang=en");
-            WebDriverManager.chromedriver().setup();
-            driver = new ChromeDriver(chromeOptions);
+        if (browser.equals("edge")) {
+            EdgeOptions edgeOptions = new EdgeOptions();
+            WebDriverManager.edgedriver().setup();
+            driver = new EdgeDriver(edgeOptions);
         } else if (browser.equals("firefox")) {
             FirefoxOptions firefoxOptions = new FirefoxOptions();
             WebDriverManager.firefoxdriver().setup();
             driver = new FirefoxDriver(firefoxOptions);
-        } else if (browser.equals("edge")) {
-            EdgeOptions edgeOptions = new EdgeOptions();
-            WebDriverManager.edgedriver().setup();
-            driver = new EdgeDriver(edgeOptions);
-        } else if (browser != null && browser != "chrome"
-                && browser != "firefox" && browser != "edge") {
+        } else if (browser.equals("chrome")) {
+            ChromeOptions chromeOptions = new ChromeOptions();
+            chromeOptions.addArguments("--lang=en");
+            WebDriverManager.chromedriver().setup();
+            driver = new ChromeDriver(chromeOptions);
+        } else if (browser != null && browser != "edge"
+                && browser != "firefox" && browser != "chrome") {
             throw new IllegalArgumentException("browser entered not correct");
         }
         driver.manage().window().maximize();
