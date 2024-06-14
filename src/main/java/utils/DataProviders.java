@@ -3,7 +3,6 @@ package utils;
 import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvException;
 import org.testng.annotations.DataProvider;
-
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -11,8 +10,6 @@ import java.util.Iterator;
 import java.util.List;
 
 public class DataProviders {
-
-    //TODO сменить имя csv файла
 
     @DataProvider(name = "invalidEmail")
     public Iterator<Object[]> invalidEmail() throws IOException {
@@ -89,7 +86,4 @@ public class DataProviders {
         }
         return userData.iterator();
     }
-
-
-
 }

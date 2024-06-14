@@ -6,7 +6,6 @@ import org.openqa.selenium.support.FindBy;
 
 public class AnleitungPage extends BasePage{
     public AnleitungPage (WebDriver driver) { super(driver);}
-
     @FindBy(xpath = "//h1[text()='Wesentliche Tipps für den erfolgreichen Cannabisanbau']")
     WebElement anleitungPageTitle;
     @FindBy(xpath = "//p[@class='css-db06rd']")
@@ -23,5 +22,4 @@ public class AnleitungPage extends BasePage{
         String expectedRes = "Diese Seite ist nur für registrierte und eingeloggte Benutzer/innen verfügbar";
         return isStringsEqual(actualRes, expectedRes);
     }
-
 }

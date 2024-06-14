@@ -6,7 +6,6 @@ import org.openqa.selenium.support.FindBy;
 
 public class MeineToepfePage extends BasePage{
     public MeineToepfePage(WebDriver driver) { super(driver);}
-
     @FindBy(xpath = "//h3[text()='Topf 1']")
     WebElement firstTopfTitle;
     @FindBy(xpath = "//p[@class='css-db06rd']")

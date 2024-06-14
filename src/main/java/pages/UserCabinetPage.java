@@ -6,7 +6,6 @@ import org.openqa.selenium.support.FindBy;
 
 public class UserCabinetPage extends BasePage{
     public UserCabinetPage (WebDriver driver) { super(driver);}
-
     @FindBy(xpath = "//button[@class='css-rxsnli' and text()='Abmelden']")
     WebElement abmeldenBtn;
     @FindBy(xpath = "//button[@class='css-1f8sraa' and text()='Abmelden']")

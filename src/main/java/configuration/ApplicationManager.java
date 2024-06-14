@@ -8,11 +8,9 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
-
 import java.time.Duration;
 
 public class ApplicationManager {
-
     static WebDriver driver;
     String browser;
 
@@ -34,9 +32,11 @@ public class ApplicationManager {
             chromeOptions.addArguments("--lang=en");
             WebDriverManager.chromedriver().setup();
             driver = new ChromeDriver(chromeOptions);
-        } else if (browser != null && browser != "edge"
-                && browser != "firefox" && browser != "chrome") {
-            throw new IllegalArgumentException("browser entered not correct");
+        } else if (browser != null &&
+                !browser.equalsIgnoreCase("edge") &&
+                !browser.equalsIgnoreCase("firefox") &&
+                !browser.equalsIgnoreCase("chrome")) {
+            throw new IllegalArgumentException("Browser entered is not correct");
         }
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
@@ -48,4 +48,15 @@ public class ApplicationManager {
     public void quit() {
         driver.quit();
     }
+
+//TODO
+//    public WebDriver init(String[] platforms) {
+//        for (String platform : platforms) {
+//    public static void main(String[] args) {
+//        ApplicationManager example = new ApplicationManager();
+//        String[] platforms = {"edge", "firefox", "chrome"};
+//        // Initialize WebDriver for each platform in the specified order
+//        example.init(platforms);
+//        // Optionally, you can return driver from init() and use it further
+//    }
 }

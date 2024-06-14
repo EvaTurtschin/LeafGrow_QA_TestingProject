@@ -6,7 +6,6 @@ import org.openqa.selenium.support.FindBy;
 
 public class AnmeldenPage extends BasePage{
     public AnmeldenPage(WebDriver driver) { super(driver);}
-
     @FindBy(xpath = "//h3[text()='Schön, dass du wieder da bist!']")
     WebElement anmeldenPageTitle;
     @FindBy(xpath = "//input[@name='email']")
@@ -17,10 +16,6 @@ public class AnmeldenPage extends BasePage{
     WebElement checkbox;
     @FindBy(xpath = "//button[@type='submit']")
     WebElement anmeldenBtnInForm;
-    @FindBy(xpath = "//h3[text()='Oops! Etwas ist schiefgegangen.']")
-    WebElement errorLoginMessage;
-
-
 
     public boolean verifyAnmeldenPageOpen() {
         String actualRes = getTextBase(anmeldenPageTitle);
@@ -37,14 +32,7 @@ public class AnmeldenPage extends BasePage{
         return new AnmeldenPage(driver);
     }
 
-    public AnmeldenPage checkLoginCheckbox() {
+    public void checkLoginCheckbox() {
         click(checkbox);
-        return new AnmeldenPage(driver);
-    }
-
-    public boolean verifyLoginUnsucceed() {
-        String actualRes = getTextBase(errorLoginMessage);
-        String expectedRes = "Oops! Etwas ist schiefgegangen.";
-        return isStringsEqual(actualRes, expectedRes);
     }
 }

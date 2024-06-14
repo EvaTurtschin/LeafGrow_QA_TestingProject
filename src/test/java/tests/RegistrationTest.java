@@ -74,7 +74,4 @@ public class RegistrationTest extends BaseTest{
                 .registerNoCeckbox("Turtle", "test600@mail.com", "Aaa12345")
                 .verifyUnsignetCheckboxErrorMessage());
     }
-
-
-
 }

@@ -5,17 +5,16 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import testData.PositiveTestUserData;
 
-
 public class HomePage extends BasePage{
     public HomePage(WebDriver driver) {
         super(driver);
     }
 
-    @FindBy(xpath = "//a[@href='/guide']")
+    @FindBy(xpath = "//a[text()='Anleitung']")
     WebElement anleitungLinkHeader;
-    @FindBy(xpath = "//a[@href='/mypots']")
+    @FindBy(xpath = "//a[@href='#/mypots']")
     WebElement meinetoepfeLinkHeader;
-    @FindBy(xpath = "//div[@class= 'css-fpykxv']")
+    @FindBy(xpath = "//div[@class='css-fpykxv']")
     WebElement anmeldenBtnHeader;
     @FindBy(xpath = "//div[@class='css-l8sm9m']")
     WebElement anmeldenBtnBody;
@@ -26,33 +25,28 @@ public class HomePage extends BasePage{
     @FindBy(xpath = "//div[@class='css-11u27a6']")
     WebElement userCabinetIcon;
 
-    public AnleitungPage clickAnleitungLinkInHeader() {
+    public void clickAnleitungLinkInHeader() {
         clickWithJSScroll(anleitungLinkHeader);
-        return new AnleitungPage(driver);
     }
 
-    public MeineToepfePage clickMeineToepfeLinkInHeader() {
+    public void clickMeineToepfeLinkInHeader() {
         clickWithJSScroll(meinetoepfeLinkHeader);
-        return new MeineToepfePage(driver);
     }
 
-    public AnmeldenPage clickAnmeldenBtnInHeader() {
+    public void clickAnmeldenBtnInHeader() {
         clickWithJSScroll(anmeldenBtnHeader);
-        return new AnmeldenPage(driver);
     }
 
     public void clickAnmeldenBtnInBody() {
         clickWithJSScroll(anmeldenBtnBody);
     }
 
-    public GesetzPage clickGesetzPagelinkInFAQ() {
+    public void clickGesetzPagelinkInFAQ() {
         clickWithJSScroll(gesetzPageLinkFQA);
-        return new GesetzPage(driver);
     }
 
-    public GesetzPage clickGesetzPagelinkInFooter() {
+    public void clickGesetzPagelinkInFooter() {
         clickWithJSScroll(gesetzPageLinkFooter);
-        return new GesetzPage(driver);
     }
 
     public boolean verifyLoginSuccess(String userName) {
@@ -61,9 +55,8 @@ public class HomePage extends BasePage{
         return isStringsEqual(actualRes, expectedRes);
     }
 
-    public UserCabinetPage clickUserCabinetPageLink() {
+    public void clickUserCabinetPageLink() {
         clickWithJSScroll(userCabinetIcon);
-        return new UserCabinetPage(driver);
     }
 
     public boolean verifyUserUnauthorized() {

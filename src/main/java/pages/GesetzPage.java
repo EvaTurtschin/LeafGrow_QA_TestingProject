@@ -6,7 +6,6 @@ import org.openqa.selenium.support.FindBy;
 
 public class GesetzPage extends BasePage{
     public GesetzPage(WebDriver driver) { super(driver);}
-
     @FindBy(xpath = "//h3[text()=' Erlaubter Besitz von Cannabis ']")
     WebElement gesetzPageTitle;
 

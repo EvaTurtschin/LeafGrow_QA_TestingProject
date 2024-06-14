@@ -3,7 +3,6 @@ package pages;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.testng.asserts.SoftAssert;
 
 public class RegistrationPage extends BasePage{
     public RegistrationPage (WebDriver driver) { super(driver);}
@@ -57,7 +56,6 @@ public class RegistrationPage extends BasePage{
         clickWithJSScroll(kontoErstellenBtn);
         return new RegistrationPage(driver);
     }
-
 
     public boolean verifyEmailSendingSuccess() {
         String actualRes = getTextBase(emailSendingMessage);

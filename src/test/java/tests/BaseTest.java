@@ -2,7 +2,6 @@ package tests;
 
 import configuration.ApplicationManager;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.remote.Browser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.ITestResult;
@@ -16,10 +15,9 @@ import java.util.Arrays;
 
 public class BaseTest {
     static WebDriver driver;
-
     static ApplicationManager app =
             new ApplicationManager(System
-                    .getProperty("browser", Browser.CHROME.browserName()));
+                    .getProperty("browser", "edge"));
 
     static Logger logger = LoggerFactory.getLogger(BaseTest.class);
 

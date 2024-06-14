@@ -1,16 +1,13 @@
 package pages;
 
-
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-
 public class BasePage {
     WebDriver driver;
-    static Logger logger = LoggerFactory.getLogger(pages.BasePage.class);
 
     public BasePage(WebDriver driver) {
         this.driver = driver;
@@ -38,9 +35,9 @@ public class BasePage {
         }
     }
 
-      public String getTextBase(WebElement element) {
-          return element.getText().trim();
-      }
+    public String getTextBase(WebElement element) {
+        return element.getText().trim();
+    }
 
     public boolean isElementDisplayed(WebElement element) {
         return element.isDisplayed();

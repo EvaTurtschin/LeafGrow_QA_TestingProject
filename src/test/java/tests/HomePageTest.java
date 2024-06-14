@@ -39,6 +39,7 @@ public class HomePageTest extends BaseTest {
         new HomePage(driver).clickUserCabinetPageLink();
         new UserCabinetPage(driver).logoutUser();
     }
+
     @Test
     public void anmeldenPageAccessabilityFromBody() {
         new HomePage(driver).clickAnmeldenBtnInBody();
@@ -66,13 +67,10 @@ public class HomePageTest extends BaseTest {
                 .verifyMeineToepfePageAccessError());
     }
 
-//  TODO bug reported - logo image  prevent link clicking
-//    @Test
-//    public void gesetzPageAccessabilityFromFooter() {
-//        new HomePage(driver).clickGesetzPagelinkInFooter();
-//        Assert.assertTrue(new GesetzPage(driver)
-//                .verifyGesetzPageOpen());
-//    }
-
-
+    @Test
+    public void gesetzPageAccessabilityFromFooter() {
+        new HomePage(driver).clickGesetzPagelinkInFooter();
+        Assert.assertTrue(new GesetzPage(driver)
+                .verifyGesetzPageOpen());
+    }
 }
