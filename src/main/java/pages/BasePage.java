@@ -3,13 +3,16 @@ package pages;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.time.Duration;
+
 public class BasePage {
     WebDriver driver;
+    protected WebDriverWait wait;
     static Logger logger = LoggerFactory.getLogger(BasePage.class);
-
 
     public BasePage(WebDriver driver) {
         this.driver = driver;
@@ -31,10 +34,16 @@ public class BasePage {
         if (actualRes.equals(expectedRes)) {
             return true;
         } else {
-            System.out.println("actual res: " + actualRes +
+            logger.info("actual res: " + actualRes +
                     " expected res " + expectedRes);
             return false;
         }
+    }
+
+    public void waitTill (WebDriver driver) {
+        this.driver = driver;
+        this.wait = new WebDriverWait(driver, Duration.ofSeconds(30)); // Используем Duration для задания времени ожидания
+        PageFactory.initElements(driver, this);
     }
 
     public String getTextBase(WebElement element) {
