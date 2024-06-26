@@ -17,7 +17,7 @@ public class HomePageTest extends BaseTest {
     @AfterMethod
     public void testPostconditions() {
         new HomePage(driver).navigateToHomePage();
-    }
+}
 
     @Test
     public void positiveAnleitungPageAccessabilityFromHeader() {
@@ -25,8 +25,6 @@ public class HomePageTest extends BaseTest {
         new AnmeldenPage(driver).loginUser(PositiveTestUserData.EMAIL, PositiveTestUserData.PASSWORD);
         new HomePage(driver).clickAnleitungLinkInHeader();
         Assert.assertTrue(new AnleitungPage(driver).verifyAnleitungPageOpen());
-        new HomePage(driver).clickUserCabinetPageLink();
-        new UserCabinetPage(driver).logoutUser();
      }
 
     @Test
@@ -34,10 +32,7 @@ public class HomePageTest extends BaseTest {
          new HomePage(driver).clickAnmeldenBtnInHeader();
          new AnmeldenPage(driver).loginUser(PositiveTestUserData.EMAIL, PositiveTestUserData.PASSWORD);
          new HomePage(driver).clickMeineToepfeLinkInHeader();
-                Assert.assertTrue(new MeineToepfePage(driver)
-                .verifyMeineToepfePageOpen());
-        new HomePage(driver).clickUserCabinetPageLink();
-        new UserCabinetPage(driver).logoutUser();
+         Assert.assertTrue(new MeineToepfePage(driver).verifyMeineToepfePageOpen());
     }
 
     @Test

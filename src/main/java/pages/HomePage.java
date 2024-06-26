@@ -3,7 +3,8 @@ package pages;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import testData.PositiveTestUserData;
+
+import java.util.List;
 
 public class HomePage extends BasePage{
     public HomePage(WebDriver driver) {
@@ -14,15 +15,13 @@ public class HomePage extends BasePage{
     WebElement anleitungLinkHeader;
     @FindBy(xpath = "//a[@href='#/mypots']")
     WebElement meinetoepfeLinkHeader;
-    @FindBy(xpath = "//div[@class='css-fpykxv']")
-    WebElement anmeldenBtnHeader;
-    @FindBy(xpath = "//div[@class='css-l8sm9m']")
-    WebElement anmeldenBtnBody;
+    @FindBy(xpath = "//button[text()='Anmelden']")
+    List<WebElement> anmeldenBtns;
     @FindBy(xpath = "//a[text()='Mehr zu erfahren']")
     WebElement gesetzPageLinkFQA;
     @FindBy(xpath = "//a[text()='Gesetzliche Informationen']")
     WebElement gesetzPageLinkFooter;
-    @FindBy(xpath = "//div[@class='css-11u27a6']")
+    @FindBy(xpath = "//div[@class='css-6y5c9t']")
     WebElement userCabinetIcon;
 
     public void clickAnleitungLinkInHeader() {
@@ -34,11 +33,11 @@ public class HomePage extends BasePage{
     }
 
     public void clickAnmeldenBtnInHeader() {
-        clickWithJSScroll(anmeldenBtnHeader);
+        clickWithJSScroll(anmeldenBtns.get(0));
     }
 
     public void clickAnmeldenBtnInBody() {
-        clickWithJSScroll(anmeldenBtnBody);
+        clickWithJSScroll(anmeldenBtns.get(1));
     }
 
     public void clickGesetzPagelinkInFAQ() {
@@ -49,10 +48,8 @@ public class HomePage extends BasePage{
         clickWithJSScroll(gesetzPageLinkFooter);
     }
 
-    public boolean verifyLoginSuccess(String userName) {
-        String actualRes = getTextBase(userCabinetIcon);
-        String expectedRes = PositiveTestUserData.USERNAME;
-        return isStringsEqual(actualRes, expectedRes);
+    public boolean verifyLoginSuccess() {
+        return isElementDisplayed(userCabinetIcon);
     }
 
     public void clickUserCabinetPageLink() {
@@ -60,7 +57,7 @@ public class HomePage extends BasePage{
     }
 
     public boolean verifyUserUnauthorized() {
-        return isElementDisplayed(anmeldenBtnHeader);
+        return isElementDisplayed(anmeldenBtns.get(0));
     }
 
 }

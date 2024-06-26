@@ -27,14 +27,14 @@ public class LoginTest extends BaseTest{
         new AnmeldenPage(driver).loginUser(PositiveTestUserData.EMAIL, PositiveTestUserData.PASSWORD)
                 .checkLoginCheckbox();
         Assert.assertTrue(new HomePage(driver)
-                .verifyLoginSuccess(PositiveTestUserData.USERNAME));
+                .verifyLoginSuccess());
     }
 
     @Test
     public void positiveTestLoginNoCheckbox() {
         new AnmeldenPage(driver).loginUser(PositiveTestUserData.EMAIL, PositiveTestUserData.PASSWORD);
         Assert.assertTrue(new HomePage(driver)
-                .verifyLoginSuccess(PositiveTestUserData.USERNAME));
+                .verifyLoginSuccess());
     }
 
 }

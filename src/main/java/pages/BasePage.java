@@ -44,7 +44,7 @@ public class BasePage {
     }
 
     public void navigateToHomePage() {
-        driver.get("http://localhost:5173/");
+        driver.get("https://leafgrow-app-foign.ondigitalocean.app/#/");
     }
 
     public void typeText(WebElement element, String text) {

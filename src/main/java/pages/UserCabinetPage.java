@@ -6,19 +6,19 @@ import org.openqa.selenium.support.FindBy;
 
 public class UserCabinetPage extends BasePage{
     public UserCabinetPage (WebDriver driver) { super(driver);}
-    @FindBy(xpath = "//button[@class='css-rxsnli' and text()='Abmelden']")
+    @FindBy(xpath = "//button[@type='button' and text()='Abmelden']")
     WebElement abmeldenBtn;
-    @FindBy(xpath = "//button[@class='css-1f8sraa' and text()='Abmelden']")
+    @FindBy(xpath = "//button[@class='css-1abj5hi' and text()='Abmelden']")
     WebElement confirmAbmeldenBtn;
     @FindBy(xpath = "//button[@class='css-ng1tv9' and text()='X']")
     WebElement cancelAbmeldenCross;
     @FindBy(xpath = "//button[@class='css-2oq7gq' and text()='Konto löschen']")
     WebElement deleteKontoBtn;
-    @FindBy(xpath = "//button[@class='css-1f8sraa' and text()='Konto löschen']")
+    @FindBy(xpath = "//button[@class='css-1abj5hi' and text()='Konto löschen']")
     WebElement confirmDeletKontoBtn;
     @FindBy(xpath = "//button[@class='css-ng1tv9' and text()='X']")
     WebElement cancelDelCross;
-    @FindBy(xpath = "//div[@class='css-11u27a6']")
+    @FindBy(xpath = "//div[@class='css-6y5c9t']")
     WebElement userCabinetIcon;
 
     public void logoutUser() {
