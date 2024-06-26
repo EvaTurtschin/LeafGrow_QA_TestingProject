@@ -1,60 +1,71 @@
 package tests;
 
-import org.testng.annotations.AfterTest;
+import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-import pages.HomePage;
+import pages.*;
+import testData.PositiveTestUserData;
 
-public class HomePageTest extends BaseTest{
+public class HomePageTest extends BaseTest {
 
     @BeforeClass
-    public void classPrecondition (){
+    public void classPrecondition() {
         new HomePage(driver).navigateToHomePage();
     }
 
-    @AfterTest
-    public void testPostconditions (){
+    @AfterMethod
+    public void testPostconditions() {
         new HomePage(driver).navigateToHomePage();
     }
 
     @Test
-    public void positiveAnleitungPageAccessabilityFromHeader () {
+    public void positiveAnleitungPageAccessabilityFromHeader() {
+        new HomePage(driver).clickAnmeldenBtnInHeader();
+        new AnmeldenPage(driver).loginUser(PositiveTestUserData.EMAIL, PositiveTestUserData.PASSWORD);
+        new HomePage(driver).clickAnleitungLinkInHeader();
+        Assert.assertTrue(new AnleitungPage(driver).verifyAnleitungPageOpen());
+     }
 
+    @Test
+    public void positiveMeineToepfePageAccessabilityFromHeader() {
+         new HomePage(driver).clickAnmeldenBtnInHeader();
+         new AnmeldenPage(driver).loginUser(PositiveTestUserData.EMAIL, PositiveTestUserData.PASSWORD);
+         new HomePage(driver).clickMeineToepfeLinkInHeader();
+         Assert.assertTrue(new MeineToepfePage(driver).verifyMeineToepfePageOpen());
     }
 
     @Test
-    public void negativeAnleitungPageAccessabilityFromHeader () {
-
+    public void anmeldenPageAccessabilityFromBody() {
+        new HomePage(driver).clickAnmeldenBtnInBody();
+                Assert.assertTrue(new AnmeldenPage(driver).verifyAnmeldenPageOpen());
     }
 
     @Test
-    public void positiveMeineToepfePageAccessabilityFromHeader () {
-
+    public void gesetzPageAccessabilityFromFAQ() {
+        new HomePage(driver).clickGesetzPagelinkInFAQ();
+        Assert.assertTrue(new GesetzPage(driver)
+                .verifyGesetzPageOpen());
     }
 
     @Test
-    public void negativeMeineToepfePageAccessabilityFromHeader () {
-
+    public void negativeAnleitungPageAccessabilityFromHeader() {
+        new HomePage(driver).clickAnleitungLinkInHeader();
+        Assert.assertTrue(new AnleitungPage(driver)
+                .verifyAnleitungPageAccessError());
     }
 
     @Test
-    public void AnmeldenPageAccessabilityFromHeader () {
-
+    public void negativeMeineToepfePageAccessabilityFromHeader() {
+        new HomePage(driver).clickMeineToepfeLinkInHeader();
+        Assert.assertTrue(new MeineToepfePage(driver)
+                .verifyMeineToepfePageAccessError());
     }
 
     @Test
-    public void AnmeldenPageAccessabilityFromBody () {
-
+    public void gesetzPageAccessabilityFromFooter() {
+        new HomePage(driver).clickGesetzPagelinkInFooter();
+        Assert.assertTrue(new GesetzPage(driver)
+                .verifyGesetzPageOpen());
     }
-
-    @Test
-    public void GesetzPageAccessabilityFromHeader () {
-
-    }
-
-    @Test
-    public void GesetzPageAccessabilityFromFooter () {
-
-    }
-
 }

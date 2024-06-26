@@ -1,9 +1,13 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 
-<suite name="Step1" verbose="1">
-    <test name="Step1">
+<suite name="User" verbose="1">
+    <test name="User">
         <classes>
-            <class name="tests.DragAndDropTest"/>
+            <class name="tests.HomePageTest"/>
+            <class name="tests.RegistrationTest"/>
+            <class name="tests.LoginTest"/>
+            <class name="tests.LogOutTest"/>
+            <class name="tests.DeleteUserTest"/>
         </classes>
     </test>
 

@@ -19,12 +19,11 @@
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
             <version>7.9.0</version>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
-            <version>4.19.1</version>
+            <version>4.21.0</version>
         </dependency>
         <dependency>
             <groupId>io.github.bonigarcia</groupId>
@@ -36,6 +35,18 @@
             <artifactId>logback-classic</artifactId>
             <version>1.5.4</version>
         </dependency>
+        <dependency>
+            <groupId>com.opencsv</groupId>
+            <artifactId>opencsv</artifactId>
+            <version>5.7.1</version>
+        </dependency>
+        <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>rest-assured</artifactId>
+            <version>4.5.1</version>
+            <scope>test</scope>
+        </dependency>
+
     </dependencies>
 
 </project>
