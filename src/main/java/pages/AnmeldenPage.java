@@ -22,7 +22,6 @@ public class AnmeldenPage extends BasePage{
         String expectedRes = "Schön, dass du wieder da bist!";
         return isStringsEqual(actualRes, expectedRes);
     }
-
     public AnmeldenPage loginUser (String userEmail, String userPassword) {
         new HomePage(driver).clickAnmeldenBtnInHeader();
         new AnmeldenPage(driver);
@@ -31,7 +30,6 @@ public class AnmeldenPage extends BasePage{
         clickWithJSScroll(anmeldenBtnInForm);
         return new AnmeldenPage(driver);
     }
-
     public void checkLoginCheckbox() {
         click(checkbox);
     }

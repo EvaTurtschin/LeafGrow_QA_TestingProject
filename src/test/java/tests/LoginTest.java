@@ -36,5 +36,4 @@ public class LoginTest extends BaseTest{
         Assert.assertTrue(new HomePage(driver)
                 .verifyLoginSuccess());
     }
-
 }

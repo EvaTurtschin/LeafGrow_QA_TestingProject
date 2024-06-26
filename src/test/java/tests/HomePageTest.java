@@ -17,7 +17,7 @@ public class HomePageTest extends BaseTest {
     @AfterMethod
     public void testPostconditions() {
         new HomePage(driver).navigateToHomePage();
-}
+    }
 
     @Test
     public void positiveAnleitungPageAccessabilityFromHeader() {

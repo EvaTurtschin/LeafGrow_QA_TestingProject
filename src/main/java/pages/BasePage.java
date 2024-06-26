@@ -8,6 +8,8 @@ import org.slf4j.LoggerFactory;
 
 public class BasePage {
     WebDriver driver;
+    static Logger logger = LoggerFactory.getLogger(BasePage.class);
+
 
     public BasePage(WebDriver driver) {
         this.driver = driver;

@@ -16,11 +16,9 @@ public class MeineToepfePage extends BasePage{
         String expectedRes = "Topf 1";
         return isStringsEqual(actualRes, expectedRes);
     }
-
     public boolean verifyMeineToepfePageAccessError() {
         String actualRes = getTextBase(pageAccessError);
         String expectedRes = "Diese Seite ist nur für registrierte und eingeloggte Benutzer/innen verfügbar";
         return isStringsEqual(actualRes, expectedRes);
     }
-
 }

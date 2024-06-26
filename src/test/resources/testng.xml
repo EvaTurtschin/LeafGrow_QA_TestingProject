@@ -10,4 +10,5 @@
             <class name="tests.DeleteUserTest"/>
         </classes>
     </test>
+
 </suite>
