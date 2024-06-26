@@ -3,6 +3,7 @@ package pages;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.List;
 
@@ -14,7 +15,7 @@ public class HomePage extends BasePage{
     @FindBy(xpath = "//a[text()='Anleitung']")
     WebElement anleitungLinkHeader;
     @FindBy(xpath = "//a[@href='#/mypots']")
-    WebElement meinetoepfeLinkHeader;
+    WebElement meineToepfeLinkHeader;
     @FindBy(xpath = "//button[text()='Anmelden']")
     List<WebElement> anmeldenBtns;
     @FindBy(xpath = "//a[text()='Mehr zu erfahren']")
@@ -29,7 +30,8 @@ public class HomePage extends BasePage{
     }
 
     public void clickMeineToepfeLinkInHeader() {
-        clickWithJSScroll(meinetoepfeLinkHeader);
+        wait.until(ExpectedConditions.visibilityOf(meineToepfeLinkHeader));
+        clickWithJSScroll(meineToepfeLinkHeader);
     }
 
     public void clickAnmeldenBtnInHeader() {

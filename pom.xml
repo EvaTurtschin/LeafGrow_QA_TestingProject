@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.example</groupId>
-    <artifactId>demoQA37_Evgeniya</artifactId>
+    <artifactId>LeafGrow_Project_QA</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
@@ -31,9 +31,14 @@
             <version>5.7.0</version>
         </dependency>
         <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.7.36</version>
+        </dependency>
+        <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
-            <version>1.5.4</version>
+            <version>1.2.11</version>
         </dependency>
         <dependency>
             <groupId>com.opencsv</groupId>

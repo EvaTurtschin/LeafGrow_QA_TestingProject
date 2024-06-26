@@ -8,6 +8,8 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.support.events.EventFiringDecorator;
+
 import java.time.Duration;
 
 public class ApplicationManager {
@@ -38,6 +40,9 @@ public class ApplicationManager {
                 !browser.equalsIgnoreCase("chrome")) {
             throw new IllegalArgumentException("Browser entered is not correct");
         }
+
+        driver = new EventFiringDecorator(new WDListener()).decorate(driver);
+
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
         driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(30));
@@ -47,6 +52,10 @@ public class ApplicationManager {
     }
     public void quit() {
         driver.quit();
+    }
+
+    public static WebDriver getDriver() {
+        return driver;
     }
 
 //TODO
