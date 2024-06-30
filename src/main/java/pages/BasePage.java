@@ -42,7 +42,7 @@ public class BasePage {
 
     public void waitTill (WebDriver driver) {
         this.driver = driver;
-        this.wait = new WebDriverWait(driver, Duration.ofSeconds(30)); // Используем Duration для задания времени ожидания
+        this.wait = new WebDriverWait(driver, Duration.ofSeconds(30));
         PageFactory.initElements(driver, this);
     }
 

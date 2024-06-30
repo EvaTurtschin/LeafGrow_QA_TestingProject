@@ -3,12 +3,13 @@ package pages;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.testng.asserts.SoftAssert;
+
+import java.util.List;
 
 public class RegistrationPage extends BasePage{
     public RegistrationPage (WebDriver driver) { super(driver);}
 
-    @FindBy(xpath = "//button[text()='Registrieren']")
-    WebElement regisrterierenBtn;
     @FindBy(xpath = "//input[@name='username']")
     WebElement inputBenutzerName;
     @FindBy(xpath = "//input[@name='email']")
@@ -17,38 +18,39 @@ public class RegistrationPage extends BasePage{
     WebElement inputPassword;
     @FindBy(xpath = "//button[@type='submit']")
     WebElement kontoErstellenBtn;
-    @FindBy(xpath = "//h1[@class='css-4fphkl']")
+    @FindBy(xpath = "//h1[@class='css-kzkyb1']")
     WebElement emailSendingMessage;
     @FindBy(xpath = "//input[@name='checkbox']")
-    WebElement checkbox;
+    WebElement checkboxInfo;
+    @FindBy(xpath = "//input[@name='ageCheckbox']")
+    WebElement checkbox18;
     @FindBy(xpath = "//p[text()='Ungültige E-Mail']")
     WebElement invalidEmailErrorMessage;
     @FindBy(xpath = "//p[text()='Für dein Passwort wähle mindestens 8 Zeichen mit 1 Kleinbuchstabe, 1 Großbuchstabe und 1 Ziffer']")
     WebElement invalidPasswordErrorMessage;
-    @FindBy(xpath = "//p[@class='css-1qyeu3y']")
-    WebElement invalidUsernameErrorMessage;
-    @FindBy(xpath = "//button[@type='button' and text()='Anmelden']")
+    @FindBy(xpath = "//p[@class='css-1wmuzee']")
+    List<WebElement> invalidUsernameErrorMessage;
+    @FindBy(xpath = "//button[text()='Anmelden']")
     WebElement anmeldenBtnInHeader;
-    @FindBy(xpath = "//p[@class='css-15c750i']")
+    @FindBy(xpath = "//p[@class='css-1wpqjrf']")
     WebElement existedEmailErrorMessage;
-    @FindBy(xpath = "//p[@class='css-15c750i']")
+    @FindBy(xpath = "//p[@class='css-1wpqjrf']")
     WebElement existedUsernameErrorMessage;
     @FindBy(xpath = "//div[text()='Checkbox muss akzeptiert werden']")
     WebElement unsignedCheckboxErrorMessage;
 
     public RegistrationPage registerUser(String userName, String userEmail, String userPassword) {
-        new AnmeldenPage(driver).clickWithJSScroll(regisrterierenBtn);
         new RegistrationPage(driver);
         typeText(inputBenutzerName, userName);
         typeText(inputEmail, userEmail);
         typeText(inputPassword, userPassword);
-        clickWithJSScroll(checkbox);
+        clickWithJSScroll(checkbox18);
+        clickWithJSScroll(checkboxInfo);
         clickWithJSScroll(kontoErstellenBtn);
         return new RegistrationPage(driver);
     }
 
-    public RegistrationPage registerNoCeckbox(String userName, String userEmail, String userPassword) {
-        new AnmeldenPage(driver).clickWithJSScroll(regisrterierenBtn);
+    public RegistrationPage registerNoCheckbox(String userName, String userEmail, String userPassword) {
         new RegistrationPage(driver);
         typeText(inputBenutzerName, userName);
         typeText(inputEmail, userEmail);
@@ -71,12 +73,12 @@ public class RegistrationPage extends BasePage{
 
     public boolean verifyInvalidPasswordErrorMessage() {
         String actualRes = getTextBase(invalidPasswordErrorMessage);
-        String expectedRes1 = "Für dein Passwort wähle mindestens 8 Zeichen mit 1 Kleinbuchstabe, 1 Großbuchstabe und 1 Ziffer";
-        return isStringsEqual(actualRes, expectedRes1);
+        String expectedRes = "Für dein Passwort wähle mindestens 8 Zeichen mit 1 Kleinbuchstabe, 1 Großbuchstabe und 1 Ziffer";
+        return isStringsEqual(actualRes, expectedRes);
     }
 
     public boolean verifyInvalidUsernameErrorMessage() {
-        return isElementDisplayed(invalidUsernameErrorMessage);
+        return isElementDisplayed(invalidUsernameErrorMessage.get(0));
     }
 
     public boolean verifyAlreadyExistedEmailErrorMessage() {
