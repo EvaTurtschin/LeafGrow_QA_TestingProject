@@ -3,6 +3,7 @@ package pages;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class AnmeldenPage extends BasePage{
     public AnmeldenPage(WebDriver driver) { super(driver);}
@@ -16,6 +17,8 @@ public class AnmeldenPage extends BasePage{
     WebElement checkbox;
     @FindBy(xpath = "//button[@type='submit']")
     WebElement anmeldenBtnInForm;
+    @FindBy(xpath = "//button[text()='Registrieren']")
+    WebElement regisrterierenBtn;
 
     public boolean verifyAnmeldenPageOpen() {
         String actualRes = getTextBase(anmeldenPageTitle);
@@ -33,4 +36,9 @@ public class AnmeldenPage extends BasePage{
     public void checkLoginCheckbox() {
         click(checkbox);
     }
+
+    public void clickRegisterBtn() {
+        new AnmeldenPage(driver).clickWithJSScroll(regisrterierenBtn);
+    }
+
 }
