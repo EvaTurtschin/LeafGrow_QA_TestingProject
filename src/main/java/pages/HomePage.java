@@ -3,9 +3,6 @@ package pages;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import testData.PositiveTestUserData;
-
 import java.util.List;
 
 public class HomePage extends BasePage{
@@ -24,31 +21,24 @@ public class HomePage extends BasePage{
     WebElement gesetzPageLinkFQA;
     @FindBy(xpath = "//a[text()='Gesetzliche Informationen']")
     WebElement gesetzPageLinkFooter;
-    @FindBy(xpath = "//div[@class='css-11u27a6']")
+    @FindBy(xpath = "//a[@href='#/account']")
     WebElement userCabinetIcon;
+    @FindBy(xpath = "//a[text()='Home']")
+    WebElement homePageLinkInHeader;
+    @FindBy(xpath = "//span[text()='Zurück zum Homepage ']")
+    List<WebElement> clickBackToHomePage;
 
     public void clickAnleitungLinkInHeader() {
         clickWithJSScroll(anleitungLinkHeader);
     }
 
-//    public void clickMeineToepfeLinkInHeader() {
-//        clickWithJSScroll(meineToepfeLinkHeader);
-//    }
-
     public void clickMeineToepfeLinkInHeader() {
-        try {
-            logger.info("Waiting for Meine Toepfe link to be clickable.");
-            wait.until(ExpectedConditions.elementToBeClickable(meineToepfeLinkHeader));
-            clickWithJSScroll(meineToepfeLinkHeader);
+            click(meineToepfeLinkHeader);
             logger.info("Clicked on Meine Toepfe link in header.");
-        } catch (Exception e) {
-            logger.error("Failed to click on Meine Toepfe link: ", e);
-            throw e; // Проброс исключения для последующей обработки в тесте
-        }
     }
 
     public void clickAnmeldenBtnInHeader() {
-        clickWithJSScroll(anmeldenBtns.get(0));
+        click(anmeldenBtns.get(0));
     }
 
     public void clickAnmeldenBtnInBody() {
@@ -63,26 +53,20 @@ public class HomePage extends BasePage{
         clickWithJSScroll(gesetzPageLinkFooter);
     }
 
-    public String verifyLoginSuccess() {
-        try {
-            logger.info("Waiting for the user cabinet icon to be visible");
-            wait.until(ExpectedConditions.visibilityOf(userCabinetIcon));
-            String actualRes = getTextBase(userCabinetIcon);
-            logger.info("Actual result after login: " + actualRes);
-            return actualRes;
-        } catch (Exception e) {
-            logger.error("Error during verifying login success: ", e);
-            return null;
-        }
-//        return isElementDisplayed(userCabinetIcon);
+    public boolean verifyLoginSuccess() {
+        clickWithJSScroll(homePageLinkInHeader);
+        return isElementDisplayed(userCabinetIcon);
     }
 
     public void clickUserCabinetPageLink() {
-        clickWithJSScroll(userCabinetIcon);
+        click(userCabinetIcon);
     }
 
     public boolean verifyUserUnauthorized() {
         return isElementDisplayed(anmeldenBtns.get(0));
     }
 
+    public void clickBackToHomePageAfterError() {
+        click(clickBackToHomePage.get(0));
+    }
 }

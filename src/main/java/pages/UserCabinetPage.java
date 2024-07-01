@@ -8,7 +8,7 @@ public class UserCabinetPage extends BasePage{
     public UserCabinetPage (WebDriver driver) { super(driver);}
     @FindBy(xpath = "//button[@type='button' and text()='Abmelden']")
     WebElement abmeldenBtn;
-    @FindBy(xpath = "//button[@class='css-1abj5hi' and text()='Abmelden']")
+    @FindBy(xpath = "//button[@class='css-xvmyyw' and text()='Abmelden']")
     WebElement confirmAbmeldenBtn;
     @FindBy(xpath = "//button[@class='css-ng1tv9' and text()='X']")
     WebElement cancelAbmeldenCross;
@@ -18,11 +18,12 @@ public class UserCabinetPage extends BasePage{
     WebElement confirmDeletKontoBtn;
     @FindBy(xpath = "//button[@class='css-ng1tv9' and text()='X']")
     WebElement cancelDelCross;
-    @FindBy(xpath = "//div[@class='css-6y5c9t']")
+    @FindBy(xpath = "//a[@href='#/account']")
     WebElement userCabinetIcon;
 
     public void logoutUser() {
         new HomePage(driver).clickUserCabinetPageLink();
+        logger.info("user cabinet link clicked");
         new UserCabinetPage(driver);
         clickWithJSScroll(abmeldenBtn);
         click(confirmAbmeldenBtn);
