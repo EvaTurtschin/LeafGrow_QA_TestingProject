@@ -3,7 +3,6 @@ package pages;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class AnmeldenPage extends BasePage{
     public AnmeldenPage(WebDriver driver) { super(driver);}
@@ -30,13 +29,10 @@ public class AnmeldenPage extends BasePage{
         new AnmeldenPage(driver);
         typeText(inputEmail, userEmail);
         typeText(inputPassword, userPassword);
-        clickWithJSScroll(anmeldenBtnInForm);
+        click(checkbox);
+        click(anmeldenBtnInForm);
         return new AnmeldenPage(driver);
     }
-    public void checkLoginCheckbox() {
-        click(checkbox);
-    }
-
     public void clickRegisterBtn() {
         new AnmeldenPage(driver).clickWithJSScroll(regisrterierenBtn);
     }
