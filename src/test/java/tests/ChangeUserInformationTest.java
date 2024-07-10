@@ -21,8 +21,9 @@ public class ChangeUserInformationTest extends BaseTest{
 
     @AfterTest
     public void testPostconditions() {
+        new HomePage(driver).navigateToHomePage();
         new HomePage(driver).clickAnmeldenBtnInHeader();
-        //TODO возврат пароля
+        new UserCabinetPage(driver).returnDefaultPassword();
     }
 
     @Test

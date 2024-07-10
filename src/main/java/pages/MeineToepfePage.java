@@ -14,6 +14,8 @@ public class MeineToepfePage extends BasePage{
     WebElement pageAccessError;
     @FindBy(xpath = "//span[text()='Zurück zum Homepage ']")
     List<WebElement> clickBackToHomePage;
+    @FindBy(xpath = "//div[@class='css-tr0eku']")
+    WebElement firstTopfBtn;
 
     public boolean verifyMeineToepfePageOpen() {
         return isElementDisplayed(firstTopfTitle);
@@ -24,8 +26,7 @@ public class MeineToepfePage extends BasePage{
         String expectedRes = "Diese Seite ist nur für registrierte und eingeloggte Benutzer/innen verfügbar";
         return isStringsEqual(actualRes, expectedRes);
     }
-
-    public void clickBackToHomePageAfterError() {
-        click(clickBackToHomePage.get(0));
+    public void firstTopfClick() {
+        click(firstTopfBtn);
     }
 }

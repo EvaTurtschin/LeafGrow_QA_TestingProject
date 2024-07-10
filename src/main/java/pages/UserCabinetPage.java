@@ -22,10 +22,19 @@ public class UserCabinetPage extends BasePage{
     WebElement cancelDelCross;
     @FindBy(xpath = "//a[@href='#/account']")
     WebElement userCabinetIcon;
+    @FindBy(xpath = "//button[text()=' Passwort ändern']")
+    WebElement passwordAndern;
+    @FindBy(xpath = "//button[@class='css-gqn8te' and text()='X']")
+    WebElement cancelPasAndernCross;
+    @FindBy(xpath = "//input[@name='newPassword']")
+    WebElement inputNewPassword;
+    @FindBy(xpath = "//button[text()='Bestätigen']")
+    WebElement confirmPasAndernBtn;
+    @FindBy(xpath = "//p[@class='css-1yilg80']")
+    WebElement passwordError;
 
     public void logoutUser() {
         new HomePage(driver).clickUserCabinetPageLink();
-        logger.info("user cabinet link clicked");
         new UserCabinetPage(driver);
         click(abmeldenBtn);
         click(confirmAbmeldenBtn);
@@ -48,33 +57,20 @@ public class UserCabinetPage extends BasePage{
 
     public UserCabinetPage cancelLogout() {
         new HomePage(driver).clickUserCabinetPageLink();
-        logger.info("user cabinet link clicked");
         new UserCabinetPage(driver);
         click(abmeldenBtn);
         click(cancelAbmeldenCross);
         return new UserCabinetPage(driver);
     }
 
-    @FindBy(xpath = "//button[text()=' Passwort ändern']")
-    WebElement passwordAndern;
-    @FindBy(xpath = "//button[@class='css-gqn8te' and text()='X']")
-    WebElement cancelPasAndernCross;
-    @FindBy(xpath = "//input[@name='newPassword']")
-    WebElement inputNewPassword;
-    @FindBy(xpath = "//button[text()='Bestätigen']")
-    WebElement confirmPasAndernBtn;
-    @FindBy(xpath = "//p[@class='css-1yilg80']")
-    WebElement passwordError;
-    public UserCabinetPage cancelPasswordChanging() {
+    public void cancelPasswordChanging() {
         click(passwordAndern);
         click(cancelPasAndernCross);
-        return new UserCabinetPage(driver);
     }
-    public UserCabinetPage changingPassword() {
+    public void changingPassword() {
         clickWithJSScroll(passwordAndern);
         typeText(inputNewPassword, "Bbb12345");
         click(confirmPasAndernBtn);
-        return new UserCabinetPage(driver);
     }
 
     public boolean verifyPasswordHasNotChanged() {
@@ -93,4 +89,13 @@ public class UserCabinetPage extends BasePage{
         return isStringsEqual(actualRes, expectedRes);
     }
 
+    public void returnDefaultPassword() {
+        new AnmeldenPage(driver).loginUser(PositiveTestUserData.EMAIL, "Bbb12345");
+        new HomePage(driver).clickUserCabinetPageLink();
+        clickWithJSScroll(passwordAndern);
+        typeText(inputNewPassword, PositiveTestUserData.PASSWORD);
+        click(confirmPasAndernBtn);
+        click(abmeldenBtn);
+        click(confirmAbmeldenBtn);
+    }
 }

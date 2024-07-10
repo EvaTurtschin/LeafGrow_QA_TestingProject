@@ -24,14 +24,15 @@ public class AnmeldenPage extends BasePage{
         String expectedRes = "Schön, dass du wieder da bist!";
         return isStringsEqual(actualRes, expectedRes);
     }
-    public AnmeldenPage loginUser (String userEmail, String userPassword) {
+    public void loginUser (String userEmail, String userPassword) {
         new HomePage(driver).clickAnmeldenBtnInHeader();
         new AnmeldenPage(driver);
+        clear(inputEmail);
         typeText(inputEmail, userEmail);
+        clear(inputPassword);
         typeText(inputPassword, userPassword);
         click(checkbox);
         click(anmeldenBtnInForm);
-        return new AnmeldenPage(driver);
     }
     public void clickRegisterBtn() {
         new AnmeldenPage(driver).clickWithJSScroll(regisrterierenBtn);

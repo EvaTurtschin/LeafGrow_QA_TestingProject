@@ -23,6 +23,10 @@ public class BasePage {
         element.click();
     }
 
+    public void clear(WebElement element) {
+        element.clear();
+    }
+
     public void clickWithJSScroll(WebElement element) {
         Actions actions = new Actions(driver);
         actions.moveToElement(element);
@@ -51,7 +55,6 @@ public class BasePage {
     }
 
     public boolean isElementDisplayed(WebElement element) {
-
         return element.isDisplayed();
     }
 
