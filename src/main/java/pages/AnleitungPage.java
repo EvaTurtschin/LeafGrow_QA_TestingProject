@@ -10,7 +10,7 @@ public class AnleitungPage extends BasePage{
     public AnleitungPage (WebDriver driver) { super(driver);}
     @FindBy(xpath = "//h1[text() = 'Wesentliche Tipps für den erfolgreichen Cannabisanbau']")
     WebElement anleitungPageTitle;
-    @FindBy(xpath = "//p[@class='css-ck0lbs']")
+    @FindBy(xpath = "//p[@class='css-1jjby0q']")
     WebElement pageAccessError;
     @FindBy(xpath = "//span[text()='Zurück zum Homepage ']")
     List<WebElement> clickBackToHomePage;
