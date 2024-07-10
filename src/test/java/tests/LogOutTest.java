@@ -24,8 +24,6 @@ public class LogOutTest extends BaseTest{
 
     @Test
     public void positiveTestLogout() {
-        new HomePage(driver)
-                .clickUserCabinetPageLink();
         new UserCabinetPage(driver).logoutUser();
         Assert.assertTrue(new HomePage(driver)
                 .verifyUserUnauthorized());
@@ -33,9 +31,6 @@ public class LogOutTest extends BaseTest{
 
     @Test
     public void canselUserLogout() {
-        new HomePage(driver)
-                .clickUserCabinetPageLink();
-        new UserCabinetPage(driver).logoutUser();
         Assert.assertTrue(new UserCabinetPage(driver)
                 .cancelLogout()
                 .verifyUserAuthirized());

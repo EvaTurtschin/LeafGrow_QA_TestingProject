@@ -32,9 +32,9 @@ public class RegistrationPage extends BasePage{
     List<WebElement> invalidUsernameErrorMessage;
     @FindBy(xpath = "//button[text()='Anmelden']")
     WebElement anmeldenBtnInHeader;
-    @FindBy(xpath = "//p[@class='css-1wpqjrf']")
+    @FindBy(xpath = "//p[@class='css-1mp050l']")
     WebElement existedEmailErrorMessage;
-    @FindBy(xpath = "//p[@class='css-1wpqjrf']")
+    @FindBy(xpath = "//p[@class='css-1mp050l']")
     WebElement existedUsernameErrorMessage;
     @FindBy(xpath = "//div[text()='Checkbox muss akzeptiert werden']")
     WebElement unsignedCheckboxErrorMessage;

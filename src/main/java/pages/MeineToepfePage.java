@@ -10,7 +10,7 @@ public class MeineToepfePage extends BasePage{
     public MeineToepfePage(WebDriver driver) { super(driver);}
     @FindBy(xpath = "//h3[text()='Topf 1']")
     WebElement firstTopfTitle;
-    @FindBy(xpath = "//p[@class='css-ck0lbs']")
+    @FindBy(xpath = "//p[@class='css-pmqoh1']")
     WebElement pageAccessError;
     @FindBy(xpath = "//span[text()='Zurück zum Homepage ']")
     List<WebElement> clickBackToHomePage;

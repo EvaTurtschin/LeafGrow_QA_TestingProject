@@ -1,12 +1,9 @@
 package tests;
 
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
-import org.testng.asserts.SoftAssert;
 import pages.AnmeldenPage;
 import testData.PositiveTestUserData;
 import org.testng.Assert;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import pages.HomePage;
 import pages.RegistrationPage;
@@ -51,8 +48,6 @@ public class RegistrationTest extends BaseTest{
     @Test
     public void RegistrationWithAlreadyExistedEmail () {
         Assert.assertTrue(new RegistrationPage(driver)
-                .registerUser(PositiveTestUserData.USERNAME, PositiveTestUserData.EMAIL, PositiveTestUserData.PASSWORD)
-                        .clickToAnmeldenBtnInHeader()
                         .registerUser("KirshCraft", PositiveTestUserData.EMAIL, "Aaa12345")
                 .verifyAlreadyExistedEmailErrorMessage());
     }
@@ -61,8 +56,6 @@ public class RegistrationTest extends BaseTest{
     public void RegistrationWithAlreadyExistedUsername () {
         Assert.assertTrue(new RegistrationPage(driver)
 //TODO  here's first registered user exist check needed (and deletion, if needed)
-//                .registerUser(PositiveTestUserData.USERNAME, PositiveTestUserData.EMAIL, PositiveTestUserData.PASSWORD)
-//                .clickToAnmeldenBtnInHeader()
                 .registerUser(PositiveTestUserData.USERNAME, "test500@mail.com", "Aaa12345")
                 .verifyAlreadyExistedUsernameErrorMessage());
     }

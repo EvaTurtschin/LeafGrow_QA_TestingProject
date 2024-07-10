@@ -24,7 +24,6 @@ public class HomePageTest extends BaseTest {
         new AnmeldenPage(driver).loginUser(PositiveTestUserData.EMAIL, PositiveTestUserData.PASSWORD);
         new HomePage(driver).clickAnleitungLinkInHeader();
         Assert.assertTrue(new AnleitungPage(driver).verifyAnleitungPageOpen());
-        new AnleitungPage(driver).clickBackToHomePageAfterError();
         new UserCabinetPage(driver).logoutUser();
     }
 
@@ -33,7 +32,6 @@ public class HomePageTest extends BaseTest {
             new AnmeldenPage(driver).loginUser(PositiveTestUserData.EMAIL, PositiveTestUserData.PASSWORD);
             new HomePage(driver).clickMeineToepfeLinkInHeader();
             Assert.assertTrue(new MeineToepfePage(driver).verifyMeineToepfePageOpen());
-            new AnleitungPage(driver).clickBackToHomePageAfterError();
             new UserCabinetPage(driver).logoutUser();
     }
 
