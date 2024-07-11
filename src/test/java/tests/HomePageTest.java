@@ -28,10 +28,10 @@ public class HomePageTest extends BaseTest {
     }
 
     @Test
-    public void positiveMeineToepfePageAccessabilityFromHeader() {
+    public void positiveMyPotsPageAccessabilityFromHeader() {
             new AnmeldenPage(driver).loginUser(PositiveTestUserData.EMAIL, PositiveTestUserData.PASSWORD);
             new HomePage(driver).clickMeineToepfeLinkInHeader();
-            Assert.assertTrue(new MeineToepfePage(driver).verifyMeineToepfePageOpen());
+            Assert.assertTrue(new MyPotsPage(driver).verifyMyPotsPageOpen());
             new UserCabinetPage(driver).logoutUser();
     }
 
@@ -56,10 +56,10 @@ public class HomePageTest extends BaseTest {
     }
 
     @Test
-    public void negativeMeineToepfePageAccessabilityFromHeader() {
+    public void negativeMyPotsPageAccessabilityFromHeader() {
         new HomePage(driver).clickMeineToepfeLinkInHeader();
-        Assert.assertTrue(new MeineToepfePage(driver)
-                .verifyMeineToepfePageAccessError());
+        Assert.assertTrue(new MyPotsPage(driver)
+                .verifyMyPotsPageAccessError());
     }
 
     @Test
