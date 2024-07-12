@@ -2,7 +2,7 @@
 ## _[LEAFGROW](https://leafgrow-app-foign.ondigitalocean.app/#/) Web Application_
 
 ## Description: 
-This project is a Java-based automated testing framework using Selenium WebDriver, TestNG, and Logback for testing functionalities of a web application related to user registration, login, logout, and account management.
+This project is a Java-based automated testing framework using Selenium WebDriver, TestNG, and Logback for testing functionalities of a web application related to user registration, login, logout, and account management, and API testing via RestApi.
 
 ## Features
 
@@ -10,6 +10,8 @@ This project is a Java-based automated testing framework using Selenium WebDrive
 - Data-Driven Testing: Utilizes CSV files (emailinvalid.csv, passwordinvalid.csv, etc.) and TestNG data providers (DataProviders class) to run tests with multiple sets of data.
 - Logging: Configured with Logback to log test execution details to both console (STDOUT) and files (FILE), allowing for easy debugging and troubleshooting.
 - TestNG Suite Configuration: Organizes tests into logical groups (HomePageTest, RegistrationTest, etc.) within testng.xml for streamlined test execution.
+- WebDriverListener: New addition to enhance test logging and event handling within Selenium WebDriver tests.
+- API Testing: Includes classes for testing API functionalities using RestApi, ensuring comprehensive test coverage.
 
 ## Setup Instructions:
 - Prerequisites: JDK (Java Development Kit) Maven (for dependency management) IDE (IntelliJ IDEA, Eclipse, etc.) with TestNG and Maven plugins
@@ -31,7 +33,7 @@ This project is a Java-based automated testing framework using Selenium WebDrive
 
 
 # PROJECT ANALYSIS: 
-Project Overview This project appears to be a Selenium-based automation testing framework implemented in Java, using TestNG for test management and Logback for logging. It focuses on testing various functionalities related to user registration, login, logout, and account management on a web application.
+Project Overview This project appears to be a Selenium-based automation testing framework implemented in Java, using TestNG for test management and Logback for logging. It focuses on testing various functionalities related to user registration, login, logout, and account management on a web application. Additionally, API testing classes ensure robust testing of backend functionalities.
 
 
 ### Key Components and Structure Pages Package (src/main/java/pages/):
