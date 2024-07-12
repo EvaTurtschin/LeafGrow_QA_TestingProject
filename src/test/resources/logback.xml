@@ -19,6 +19,7 @@
     </appender>
 
     <logger name="com.example.package" level="DEBUG">
+        <appender-ref ref="STDOUT" />
         <appender-ref ref="FILE" />
     </logger>
 
